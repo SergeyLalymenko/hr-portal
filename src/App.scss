@@ -1,0 +1,17 @@
+@import './src/styles/variables/index';
+
+.main {
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+    padding-top: 60px;
+    min-height: 100vh;
+}
+
+.content {
+    width: 100%;
+    background: $colorSuperLightGray;
+    padding: 0 0 0 220px;
+}
+
+@import './AppResponsive';

@@ -1,0 +1,87 @@
+@import './src/styles/variables/index';
+
+.notifications {
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0px 0px 20px rgba(50, 74, 102, 0.2);
+    background: $colorWhite;
+    position: fixed;
+    top: 0;
+    right: -400px;
+    width: 400px;
+    height: 100vh;
+    padding: 20px;
+    z-index: 5;
+    transition: right .4s;
+
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+
+        h5 {
+            color: $colorAcGray2;
+        }
+    }
+
+    &__close {
+        width: 26px;
+        height: 26px;
+        position: relative;
+        cursor: pointer;
+
+        div {
+            position: absolute;
+            top: 12px;
+            left: 0;
+            width: 26px;
+            height: 2px;
+            border-radius: 1px;
+            background: $colorBlack;
+
+            &:nth-child(1) {
+                transform: rotate(45deg);
+            }
+
+            &:nth-child(2) {
+                transform: rotate(-45deg);
+            }
+        }
+    }
+
+    &__unread {
+        display: none;
+        align-items: center;
+        margin-bottom: 20px;
+
+        h6 {
+            margin-left: 6px;
+            color: $colorBlue;
+            cursor: pointer;
+        }
+    }
+
+    &__unread.active {
+        display: flex;
+    }
+
+    &__unread-amount {
+        padding: 0 4px;
+        border-radius: 4px;
+        background: $colorVividOrange;
+
+        p {
+            color: $colorWhite;
+        }
+    }
+
+    &__rows {
+        overflow: auto;
+    }
+}
+
+.notifications.open {
+    right: 0;
+}
+
+@import './NotificationsResponsive';

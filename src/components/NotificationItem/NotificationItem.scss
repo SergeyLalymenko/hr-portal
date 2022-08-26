@@ -1,0 +1,48 @@
+@import './src/styles/variables/index';
+
+.notification {
+    display: flex;
+    align-items: center;
+    padding: 8px 5px 8px 0;
+    border-top: 1px solid $colorLightGray;
+
+    &__title {
+        color: $colorLightBlue;
+        margin-left: 4px;
+        margin-right: 20px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        cursor: pointer;
+    }
+
+    &__date {
+        margin-right: 0;
+        margin-left: auto;
+        color: $colorAcGray2;
+    }
+
+    &__unread-marker {
+        width: 12px;
+        height: 12px;
+        margin-left: 14px;
+
+        img {
+            display: none;
+        }
+    }
+}
+
+.notification.new {
+    .notification__title {
+        font-weight: 700;
+    }
+
+    .notification__unread-marker {
+        img {
+            display: block;
+        }
+    }
+}
+
+@import './NotificationItemResponsive';

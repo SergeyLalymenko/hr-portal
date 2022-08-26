@@ -1,0 +1,107 @@
+@media($media-xl) {
+    .header {
+        &__greetings {
+            margin-left: 28px;
+        }
+    }
+}
+
+@media($media-lg) {
+    .header {
+        &__greetings {
+            margin-left: 20px;
+        }
+    }
+}
+
+@media($media-md) {
+    .header {
+        &__wrapper {
+            height: 68px;
+            padding: 0 15px;
+        }
+
+        &__search {
+            order: 2;
+            margin-left: 14px;
+            height: auto;
+            width: auto;
+            border-radius: 0;
+            border: 0;
+            padding: 0;
+
+            input {
+                display: none;
+            }
+
+            img {
+                width: 38px;
+                height: 38px;
+                padding: 8px;
+                margin-left: 0;
+            }
+        }
+
+        &__notifications-icon {
+            order: 1;
+            margin-left: 0;
+        }
+
+        &__greetings {
+            display: none;
+        }
+
+        &__avatar {
+            display: none;
+        }
+
+        &__burger {
+            display: flex;
+            order: 3;
+            margin-left: 14px;
+            width: 38px;
+            height: 38px;
+            position: relative;
+            cursor: pointer;
+
+            div {
+                position: absolute;
+                left: 7px;
+                width: 24px;
+                height: 2px;
+                background: $colorAcGray;
+                transition: .2s;
+
+                &:nth-child(1) {
+                    top: 10px;
+                }
+
+                &:nth-child(2) {
+                    top: 18px;
+                }
+
+                &:nth-child(3) {
+                    top: 26px;
+                }
+            }
+        }
+
+        &__burger.active {
+            div {
+                &:nth-child(1) {
+                    top: 18px;
+                    transform: rotate(45deg);
+                }
+
+                &:nth-child(2) {
+                    display: none;
+                }
+
+                &:nth-child(3) {
+                    top: 18px;
+                    transform: rotate(-45deg);
+                }
+            }
+        }
+    }
+}

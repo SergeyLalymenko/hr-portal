@@ -1,0 +1,105 @@
+@media($media-lg) {
+    .sidebar {
+        &__toggler {
+            width: 130px;
+            padding: 20px 10px 0;
+        }
+
+        &__route {
+            h6 {
+                font-size: 0.75rem;
+                line-height: 1.34;
+            }
+        }
+    }
+}
+
+@media($media-md) {
+    .sidebar {
+        min-height: auto;
+        height: 0;
+        width: 0;
+
+        &__toggler {
+            position: fixed;
+            top: 68px;
+            right: -295px;
+            width: 295px;
+            height: calc(100vh - 68px);
+            padding: 40px 10px 60px;
+            transition: .4s;
+        }
+
+        &__background {
+            position: fixed;
+            top: 68px;
+            left: 0;
+            width: 100%;
+            height: calc(100vh - 68px);
+            background: $colorWhite;
+            opacity: .7;
+        }
+
+        &__route {
+            margin: 40px 0 0 70px;
+
+            h6 {
+                font-size: 1.25rem;
+                line-height: 1.3;
+            }
+        }
+
+        &__user {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            margin-top: auto;
+            margin-bottom: 0;
+        }
+
+        &__avatar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: $colorAcGray;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+
+            h6 {
+                font-weight: 700;
+                color: $colorWhite;
+                text-transform: uppercase;
+            }
+
+            img {
+                position: absolute;
+                width: 100%;
+                height: auto;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+        }
+
+        &__greetings {
+            margin-top: 15px;
+            color: $colorWhite;
+            text-align: center;
+        }
+    }
+
+    .sidebar.active {
+        .sidebar__background {
+            display: flex;
+        }
+
+        .sidebar__toggler {
+            right: 0;
+        }
+    }
+}
