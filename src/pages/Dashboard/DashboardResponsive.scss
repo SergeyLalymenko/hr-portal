@@ -1,0 +1,71 @@
+@media($media-xl) {
+    .dashboard {
+        &__head {
+            margin: 40px 32px 32px;
+
+            h2 {
+                @include h3;
+            }
+
+            button {
+                width: 200px;
+            }
+        }
+
+        &__body {
+            margin: 0 32px 16px;
+        }
+    }
+}
+
+@media($media-lg) {
+    .dashboard {
+        &__head {
+            margin: 40px 18px 36px;
+        }
+
+        &__body {
+            flex-direction: column;
+            margin: 0 18px 24px;
+
+            .dashboard-block {
+                margin-top: 24px;
+
+                &:first-child {
+                    margin-top: 0;
+                }
+            }
+        }
+    }
+}
+
+@media($media-sm) {
+    .dashboard {
+        &__head {
+            margin: 30px 15px;
+
+            button {
+                width: 40px;
+                height: 40px;
+
+                svg {
+                    margin: 0;
+                    width: 26px;
+                    height: 26px;
+                }
+
+                span {
+                    display: none;
+                }
+            }
+        }
+
+        &__body {
+            margin: 0 15px 40px;
+
+            .dashboard-block {
+                margin-top: 40px;
+            }
+        }
+    }
+}

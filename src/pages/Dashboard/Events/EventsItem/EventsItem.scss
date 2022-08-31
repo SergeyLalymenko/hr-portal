@@ -1,0 +1,33 @@
+@import './src/styles/variables/index';
+
+.event {
+    display: flex;
+    align-items: center;
+    padding: 1px 0;
+    border-top: 1px solid $colorLightGray;
+
+    &__content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        margin-left: 12px;
+    }
+
+    &__name {
+        margin-right: auto;
+        color: $colorDarkBlue;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    &__celebration {
+        margin-left: 20px;
+        color: $colorDarkBlue;
+        min-width: 50%;
+        width: 50%;
+    }
+}
+
+@import './EventsItemResponsive';

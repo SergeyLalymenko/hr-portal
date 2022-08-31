@@ -1,0 +1,237 @@
+@media($media-xl) {
+    .events {
+        padding: 16px 20px;
+        height: 240px;
+
+        &__head {
+            margin-bottom: 10px;
+
+            h5 {
+                @include h6;
+            }
+        }
+
+        &__add {
+            margin-left: 5px;
+        }
+
+        &__datepicker {
+            max-width: 260px;
+            width: 100%;
+            margin-left: 5px;
+        }
+
+        &__customizing {
+            margin-bottom: 16px;
+        }
+
+        &__empty {
+            img {
+                width: 31px;
+                height: 35px;
+            }
+
+            h6 {
+                margin-top: 16px;
+            }
+
+            button {
+                margin-top: 16px;
+            }
+        }
+    }
+
+    //.modal {
+    //    &__dialog {
+    //        max-width: 680px;
+    //    }
+    //
+    //    &__header {
+    //        padding: 30px 45px 0;
+    //    }
+    //
+    //    &__body {
+    //        padding: 50px 45px 70px;
+    //    }
+    //}
+}
+
+@media($media-lg) {
+    .events {
+        height: 300px;
+        max-width: none;
+
+        &__head {
+            margin-bottom: 20px;
+
+            h5 {
+                @include h5;
+            }
+        }
+
+        &__add {
+            margin-left: 16px;
+        }
+
+        &__customizing {
+            margin-bottom: 26px;
+        }
+
+        &__empty {
+            img {
+                width: 44px;
+                height: 50px;
+            }
+
+            h6 {
+                margin-top: 30px;
+            }
+
+            button {
+                margin-top: 40px;
+            }
+        }
+    }
+
+    //.modal {
+    //    &__dialog {
+    //        max-width: 444px;
+    //    }
+    //
+    //    &__header {
+    //        padding: 30px 35px 0 80px;
+    //    }
+    //
+    //    &__body {
+    //        padding: 80px 80px 70px;
+    //
+    //        .form {
+    //            &__field-box {
+    //                width: 100%;
+    //                margin-top: 15px;
+    //
+    //                select {
+    //                    background: url('../assets/img/dashboard/events/select-arrow.svg')no-repeat calc(100% - 15px) 50%;
+    //                }
+    //
+    //                input {
+    //                    background: url('../assets/img/general/calendar.svg')no-repeat calc(100% - 10px) 50%;
+    //                }
+    //            }
+    //
+    //            &__field-box--textarea {
+    //                order: 1;
+    //            }
+    //
+    //            &__submit-box {
+    //                order: 2;
+    //                margin-top: 30px;
+    //            }
+    //        }
+    //    }
+    //}
+}
+
+@media($media-sm) {
+    .events {
+        padding: 18px 15px;
+        height: auto;
+        max-height: 700px;
+
+        &__head {
+            flex-wrap: wrap;
+            margin-bottom: 24px;
+
+            &:after {
+                content: '';
+                width: 100%;
+                order: 0;
+            }
+
+            h5 {
+                margin: 7px 0;
+            }
+        }
+
+        &__add {
+            min-width: 40px;
+            width: 40px;
+            height: 40px;
+            margin-left: auto;
+            margin-right: 0;
+
+            div {
+                top: 19px;
+                left: 10px;
+                width: 20px;
+            }
+        }
+
+        &__datepicker {
+            margin-top: 10px;
+            margin-left: 0;
+            order:1;
+        }
+
+        &__customizing {
+            margin-top: 40px;
+            margin-bottom: 50px;
+        }
+
+        &__empty {
+            button {
+                margin-top: 30px;
+            }
+        }
+    }
+
+    //.modal {
+    //    &__dialog {
+    //        max-width: none;
+    //    }
+    //
+    //    &__header {
+    //        padding: 120px 40px 0;
+    //
+    //        h4 {
+    //            margin: 0 auto;
+    //            text-align: center;
+    //        }
+    //    }
+    //
+    //    &__close {
+    //        width: 40px;
+    //        height: 40px;
+    //        position: absolute;
+    //        top: 15px;
+    //        right: 15px;
+    //
+    //        div {
+    //            top: 19px;
+    //            left: 5px;
+    //        }
+    //    }
+    //
+    //    &__body {
+    //        padding: 9px 40px 40px;
+    //
+    //        .form {
+    //            &__field-box {
+    //                margin-top: 12px;
+    //
+    //                select {
+    //                    background: url('../assets/img/dashboard/events/select-arrow.svg')no-repeat calc(100% - 20px) 50%;
+    //                }
+    //
+    //                input {
+    //                    background: url('../assets/img/general/calendar.svg')no-repeat calc(100% - 16px) 50%;
+    //                }
+    //            }
+    //
+    //            &__submit-box {
+    //                margin-top: 24px;
+    //            }
+    //        }
+    //    }
+    //}
+}

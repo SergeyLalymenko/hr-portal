@@ -1,0 +1,305 @@
+@import './src/styles/variables/index';
+
+.events {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 12px 20px 20px;
+    box-shadow: 0px 0px 16px rgba(50, 74, 102, 0.16);
+    border-radius: 4px;
+    background: $colorWhite;
+    height: 300px;
+    max-width: calc(50% - 12px);
+    width: 100%;
+    border: 1px solid $colorWhite;
+    transition: border .2s;
+
+    &__head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        margin-bottom: 20px;
+
+        h5 {
+            color: $colorAcGray2;
+        }
+    }
+
+    &__add {
+        min-width: 32px;
+        width: 32px;
+        height: 32px;
+        position: relative;
+        border-radius: 4px;
+        background: $colorLightBlue;
+        margin-left: 16px;
+        margin-right: auto;
+        transition: .2s;
+        cursor: pointer;
+
+        &:hover {
+            background: $colorBlue;
+        }
+
+        div {
+            position: absolute;
+            top: 15px;
+            left: 8px;
+            width: 16px;
+            height: 2px;
+            border-radius: 1px;
+            background: $colorWhite;
+
+            &:first-child {
+                transform: rotate(90deg);
+            }
+        }
+    }
+
+    &__datepicker {
+        width: 260px;
+        height: 38px;
+        border-radius: 4px;
+        border: 1px solid $colorAcGray;
+        padding: 0 30px 0 12px;
+        background: url('../../../assets/img/general/calendar.svg')no-repeat calc(100% - 8px) 50%;
+        font-size: 1rem;
+        line-height: 1;
+        font-weight: 400;
+        color: $colorDarkBlue;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    &__customizing {
+        display: none;
+        align-items: center;
+        margin-top: 10px;
+        margin-bottom: 26px;
+        cursor: pointer;
+
+        h6 {
+            margin-left: 10px;
+            color: $colorLightBlue;
+        }
+    }
+
+    &__delete {
+        position: relative;
+        width: 22px;
+        height: 22px;
+
+        div {
+            position: absolute;
+            width: 16px;
+            height: 2px;
+            background: $colorLightBlue;
+            border-radius: 1px;
+            top: 10px;
+            left: 3px;
+
+            &:nth-child(1) {
+                transform: rotate(45deg);
+            }
+
+            &:nth-child(2) {
+                transform: rotate(-45deg);
+            }
+        }
+    }
+
+    &__empty {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        margin-top: 20px;
+
+        h6 {
+            margin-top: 30px;
+            color: $colorAcGray;
+            text-align: center;
+        }
+
+        button {
+            @include btn-secondary;
+            @include btn-md;
+
+            margin-top: 40px;
+            width: 200px;
+
+            h5 {
+                margin-left: 10px;
+            }
+        }
+    }
+
+    &__list {
+        width: 100%;
+        overflow: auto;
+    }
+}
+
+.events.empty {
+    .events__empty {
+        display: flex;
+    }
+
+    .events__add {
+        display: none;
+    }
+
+    .events__list {
+        display: none;
+    }
+}
+
+.events.customizing {
+    &:hover {
+        border-color: $colorLightBlue;
+    }
+
+    .events__head {
+        display: none;
+    }
+
+    .events__customizing {
+        display: flex;
+    }
+}
+
+//.modal {
+//    &__dialog {
+//        max-width: 786px;
+//    }
+//
+//    &__header {
+//        padding: 30px 30px 0;
+//
+//        h4 {
+//            color: $colorDarkBlue;
+//        }
+//    }
+//
+//    &__close {
+//        width: 30px;
+//        height: 30px;
+//        position: relative;
+//        cursor: pointer;
+//
+//        div {
+//            position: absolute;
+//            top: 14px;
+//            left: 0;
+//            width: 30px;
+//            height: 2px;
+//            background: $colorBlack;
+//            border-radius: 1px;
+//
+//            &:nth-child(1) {
+//                transform: rotate(45deg);
+//            }
+//
+//            &:nth-child(2) {
+//                transform: rotate(-45deg);
+//            }
+//        }
+//    }
+//
+//    &__body {
+//        padding: 40px 90px 70px;
+//
+//        .form {
+//            &__field-box {
+//                max-height: 90px;
+//                width: calc(50% - 11px);
+//                margin-top: 13px;
+//                position: relative;
+//
+//                select {
+//                    appearance: none;
+//                    background: url('../assets/img/dashboard/events/select-arrow.svg')no-repeat calc(100% - 20px) 50%;
+//                    cursor: pointer;
+//                }
+//
+//                input {
+//                    background: url('../assets/img/general/calendar.svg')no-repeat calc(100% - 16px) 50%;
+//                    cursor: pointer;
+//                }
+//
+//                label {
+//                    font-size: 1rem;
+//                    line-height: 1;
+//                    font-weight: 400;
+//                    color: $colorAcGray;
+//                    position: absolute;
+//                    top: 11px;
+//                    left: 12px;
+//                    pointer-events: none;
+//                    transition: .2s;
+//                }
+//
+//                select:active + label,
+//                select:not(:active):valid + label,
+//                input:not(:placeholder-shown) + label,
+//                textarea:focus + label,
+//                textarea:not(:placeholder-shown) + label {
+//                    font-size: 0.625rem;
+//                    top: 3px!important;
+//                }
+//            }
+//
+//            &__field {
+//                width: 100%;
+//                height: 38px;
+//                background-color: $colorWhite;
+//                border: 1px solid $colorAcGray;
+//                border-radius: 4px;
+//                outline: none;
+//                font-size: 1rem;
+//                line-height: 1.375;
+//                font-weight: 400;
+//                color: $colorDarkBlue;
+//                padding: 12px 12px 0;
+//
+//                &::placeholder {
+//                    opacity: 0;
+//                }
+//            }
+//
+//            &__field--textarea {
+//                height: 90px;
+//                resize: none;
+//            }
+//
+//            &__field-box--end-date {
+//                margin-top: -39px;
+//            }
+//
+//            &__submit-box {
+//                margin-top: 40px;
+//                width: 100%;
+//            }
+//
+//            &__submit {
+//                @include btn-secondary;
+//                @include btn-md;
+//
+//                width: 200px;
+//
+//                h5 {
+//                    margin-left: 10px;
+//                }
+//            }
+//
+//            &__submit.disabled {
+//                background: $colorLightGray;
+//                color: $colorAcGray;
+//            }
+//        }
+//    }
+//}
+
+@import './EventsResponsive';

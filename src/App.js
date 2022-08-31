@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import { fetchUser } from './store/userSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import Header from './components/Header/Header';
@@ -7,7 +7,6 @@ import Sidebar from './components/Sidebar/Sidebar';
 import Dashboard from './pages/Dashboard/Dashboard';
 import Company from './pages/Company/Company';
 import Settings from './pages/Settings/Settings';
-import ErrorPage from './pages/ErrorPage/ErrorPage';
 import './App.scss';
 
 function App() {
@@ -24,7 +23,7 @@ function App() {
     }
 
     function renderUserName() {
-        return user ? user[0].name : '';
+        return user ? user[0].name : 'user';
     }
 
     function renderUserAvatar() {
@@ -44,10 +43,10 @@ function App() {
 
             <div className="content">
                 <Routes>
-                    <Route path="/dashboard" element={<Dashboard />} />
+                    <Route path="/dashboard" element={<Dashboard renderUserName={renderUserName} />} />
                     <Route path="/company" element={<Company />} />
                     <Route path="/settings" element={<Settings />} />
-                    <Route path="*" element={<ErrorPage />} />
+                    <Route path="*" element={<Navigate to={'/dashboard'} />} />
                 </Routes>
             </div>
         </main>

@@ -1,0 +1,74 @@
+@media($media-xl) {
+    .todos-item {
+        &__title {
+            @include p;
+
+            margin-right: 10px;
+        }
+
+        &__date {
+            @include p;
+
+            margin-left: 6px;
+        }
+    }
+}
+
+@media($media-lg) {
+    .todos-item {
+        &__title {
+            @include h6;
+        }
+
+        &__date {
+            @include h6;
+
+            margin-left: 20px;
+        }
+    }
+}
+
+@media($media-sm) {
+    .todos-item {
+        &__wrapper {
+            margin: 0 15px;
+        }
+
+        &__title {
+            margin-right: 0;
+        }
+
+        &__description {
+            position: absolute;
+            bottom: 8px;
+            right: 0;
+        }
+
+        &__date {
+            margin-left: 5px;
+        }
+
+        &__hover {
+            opacity: 1;
+            position: static;
+            transform: none;
+            background: none;
+            margin-top: 8px;
+        }
+
+        &__mark {
+            padding: 6px;
+            border-radius: 5px;
+            margin-left: 10px;
+
+            &:first-child {
+                margin-left: 20px;
+            }
+
+            img {
+                width: 28px;
+                height: 28px;
+            }
+        }
+    }
+}

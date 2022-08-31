@@ -1,0 +1,53 @@
+@import './src/styles/variables/index';
+
+.dashboard {
+    display: flex;
+    flex-direction: column;
+
+    &__head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 40px 60px 32px 32px;
+
+        h2 {
+            color: $colorBlue;
+        }
+
+        button {
+            @include btn-tertiary;
+            @include btn-md;
+            width: 224px;
+            color: $colorBlue;
+            border: 1px solid $colorBlue;
+            background: $colorWhite;
+            margin-left: 20px;
+
+            svg {
+                margin-right: 10px;
+            }
+        }
+
+        button.active {
+            color: $colorDullOrange;
+            border-color: $colorDullOrange;
+
+            &:hover {
+                background: $colorDullOrange;
+                color: $colorWhite;
+            }
+        }
+    }
+
+    &__body {
+        display: flex;
+        justify-content: space-between;
+        margin: 0 60px 24px 32px;
+
+        .customizing {
+            cursor: pointer;
+        }
+    }
+}
+
+@import './DashboardResponsive';
