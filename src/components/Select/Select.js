@@ -1,6 +1,13 @@
 import './Select.scss';
 
-function Select({ boxClassName, selectClassName, options, currentValue, setCurrentValue, label }) {
+function Select({
+        boxClassName,
+        selectClassName,
+        options,
+        currentValue,
+        setCurrentValue,
+        label
+    }) {
     function getBoxClassName() {
         return boxClassName ? boxClassName : '';
     }

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Notifications from '../Notifications/Notifications';
 import logo from '../../assets/img/header/logo.svg';
@@ -12,10 +13,20 @@ function Header({
         renderUserName,
         renderUserAvatar,
     }) {
+    const notifications = useSelector(state => state.notifications.data);
     const [areNotificationsOpened, setAreNotificationsOpened] = useState(false);
+    const [isActiveSearch, setIsActiveSearch] = useState(false);
 
     function toggleNotifications() {
         setAreNotificationsOpened(!areNotificationsOpened);
+    }
+
+    function getUnreadClass() {
+        if(notifications) {
+            const isUnreadNotification = !!notifications.find((notification) => notification.new === true);
+
+            return isUnreadNotification ? 'unread' : '';
+        }
     }
 
     return (
@@ -26,13 +37,19 @@ function Header({
                 </Link>
 
                 <div className="header__row">
-                    <div className="header__search">
+                    <div className={`header__search ${isActiveSearch ? 'active' : ''}`}>
                         <input type="search" placeholder="Search"/>
 
-                        <img src={searchIcon} width="22" height="22" alt="search"/>
+                        <img
+                            src={searchIcon}
+                            width="22"
+                            height="22"
+                            alt="search"
+                            onClick={() => setIsActiveSearch(!isActiveSearch)}
+                        />
                     </div>
 
-                    <svg className={`header__notifications-icon ${areNotificationsOpened ? 'open' : ''}`}
+                    <svg className={`header__notifications-icon ${getUnreadClass()} ${areNotificationsOpened ? 'open' : ''}`}
                          onClick={toggleNotifications}
                          width="38"
                          height="38"
