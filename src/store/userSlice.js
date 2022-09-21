@@ -23,11 +23,6 @@ const userSlice = createSlice({
     initialState: {
         data: null,
     },
-    // reducers: {
-    //     setUserData(state, action) {
-    //         state.data = action.payload;
-    //     },
-    // },
     extraReducers: {
         [fetchUser.fulfilled]: (state, { payload }) => {
             state.data = payload;
@@ -36,4 +31,3 @@ const userSlice = createSlice({
 });
 
 export default userSlice.reducer;
-// export const { setUserData } = userSlice.actions;

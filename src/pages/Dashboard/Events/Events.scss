@@ -19,10 +19,11 @@
         align-items: center;
         justify-content: space-between;
         width: 100%;
-        margin-bottom: 20px;
+        margin-bottom: 12px;
 
         h5 {
             color: $colorAcGray2;
+            line-height: 38px;
         }
     }
 
@@ -74,10 +75,10 @@
     }
 
     &__customizing {
-        display: none;
+        display: flex;
         align-items: center;
         margin-top: 10px;
-        margin-bottom: 26px;
+        margin-bottom: 18px;
         cursor: pointer;
 
         h6 {
@@ -111,7 +112,7 @@
     }
 
     &__empty {
-        display: none;
+        display: flex;
         flex-direction: column;
         align-items: center;
         width: 100%;
@@ -142,164 +143,10 @@
     }
 }
 
-.events.empty {
-    .events__empty {
-        display: flex;
-    }
-
-    .events__add {
-        display: none;
-    }
-
-    .events__list {
-        display: none;
-    }
-}
-
 .events.customizing {
     &:hover {
         border-color: $colorLightBlue;
     }
-
-    .events__head {
-        display: none;
-    }
-
-    .events__customizing {
-        display: flex;
-    }
 }
-
-//.modal {
-//    &__dialog {
-//        max-width: 786px;
-//    }
-//
-//    &__header {
-//        padding: 30px 30px 0;
-//
-//        h4 {
-//            color: $colorDarkBlue;
-//        }
-//    }
-//
-//    &__close {
-//        width: 30px;
-//        height: 30px;
-//        position: relative;
-//        cursor: pointer;
-//
-//        div {
-//            position: absolute;
-//            top: 14px;
-//            left: 0;
-//            width: 30px;
-//            height: 2px;
-//            background: $colorBlack;
-//            border-radius: 1px;
-//
-//            &:nth-child(1) {
-//                transform: rotate(45deg);
-//            }
-//
-//            &:nth-child(2) {
-//                transform: rotate(-45deg);
-//            }
-//        }
-//    }
-//
-//    &__body {
-//        padding: 40px 90px 70px;
-//
-//        .form {
-//            &__field-box {
-//                max-height: 90px;
-//                width: calc(50% - 11px);
-//                margin-top: 13px;
-//                position: relative;
-//
-//                select {
-//                    appearance: none;
-//                    background: url('../assets/img/dashboard/events/select-arrow.svg')no-repeat calc(100% - 20px) 50%;
-//                    cursor: pointer;
-//                }
-//
-//                input {
-//                    background: url('../assets/img/general/calendar.svg')no-repeat calc(100% - 16px) 50%;
-//                    cursor: pointer;
-//                }
-//
-//                label {
-//                    font-size: 1rem;
-//                    line-height: 1;
-//                    font-weight: 400;
-//                    color: $colorAcGray;
-//                    position: absolute;
-//                    top: 11px;
-//                    left: 12px;
-//                    pointer-events: none;
-//                    transition: .2s;
-//                }
-//
-//                select:active + label,
-//                select:not(:active):valid + label,
-//                input:not(:placeholder-shown) + label,
-//                textarea:focus + label,
-//                textarea:not(:placeholder-shown) + label {
-//                    font-size: 0.625rem;
-//                    top: 3px!important;
-//                }
-//            }
-//
-//            &__field {
-//                width: 100%;
-//                height: 38px;
-//                background-color: $colorWhite;
-//                border: 1px solid $colorAcGray;
-//                border-radius: 4px;
-//                outline: none;
-//                font-size: 1rem;
-//                line-height: 1.375;
-//                font-weight: 400;
-//                color: $colorDarkBlue;
-//                padding: 12px 12px 0;
-//
-//                &::placeholder {
-//                    opacity: 0;
-//                }
-//            }
-//
-//            &__field--textarea {
-//                height: 90px;
-//                resize: none;
-//            }
-//
-//            &__field-box--end-date {
-//                margin-top: -39px;
-//            }
-//
-//            &__submit-box {
-//                margin-top: 40px;
-//                width: 100%;
-//            }
-//
-//            &__submit {
-//                @include btn-secondary;
-//                @include btn-md;
-//
-//                width: 200px;
-//
-//                h5 {
-//                    margin-left: 10px;
-//                }
-//            }
-//
-//            &__submit.disabled {
-//                background: $colorLightGray;
-//                color: $colorAcGray;
-//            }
-//        }
-//    }
-//}
 
 @import './EventsResponsive';

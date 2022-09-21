@@ -18,6 +18,23 @@ export const fetchEvents = createAsyncThunk(
     }
 );
 
+export const createEvent = createAsyncThunk(
+    'events/createEvent',
+    async function(newEvent, { rejectWithValue }) {
+        try {
+            const res = await api.post('events', newEvent);
+
+            if(res.statusText !== 'Created') {
+                throw new Error('Can not create event!');
+            }
+
+            return res.data;
+        } catch(err) {
+            return rejectWithValue(err.message);
+        }
+    }
+);
+
 const eventsSlice = createSlice({
     name: 'events',
     initialState: {
@@ -26,6 +43,9 @@ const eventsSlice = createSlice({
     extraReducers: {
         [fetchEvents.fulfilled]: (state, { payload }) => {
             state.data = payload;
+        },
+        [createEvent.fulfilled]: (state, { payload }) => {
+            state.data.push(payload);
         },
     },
 });

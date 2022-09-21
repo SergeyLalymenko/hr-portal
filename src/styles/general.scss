@@ -74,3 +74,49 @@ button {
         border-radius: 2px;
     }
 }
+.tip {
+    position: relative;
+    z-index: 5;
+    width: 240px;
+    background: $colorWhite;
+    box-shadow: 0px 0px 16px 0px #324A6629;
+    border-radius: 4px;
+    padding: 12px 26px;
+}
+.tip-triangle {
+    position: absolute;
+    width: 0;
+    height: 0;
+}
+.tip-right {
+    top: 50%;
+    left: 100%;
+    transform: translateY(-50%);
+    border-top: 5px solid transparent;
+    border-left: 10px solid $colorWhite;
+    border-bottom: 5px solid transparent;
+}
+.tip-left {
+    top: 50%;
+    right: 100%;
+    transform: translateY(-50%);
+    border-top: 5px solid transparent;
+    border-right: 10px solid $colorWhite;
+    border-bottom: 5px solid transparent;
+}
+.tip-top {
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 10px solid $colorWhite;
+}
+.tip-bottom {
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 10px solid $colorWhite;
+}

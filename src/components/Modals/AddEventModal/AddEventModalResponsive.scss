@@ -1,0 +1,74 @@
+@media($media-xl) {
+    .add-event-modal {
+        &__head {
+            padding: 30px 40px 0;
+        }
+
+        .form {
+            padding: 40px 40px 70px;
+        }
+    }
+}
+
+@media($media-lg) {
+    .add-event-modal {
+        &__head {
+            padding: 30px 30px 0 80px;
+        }
+
+        .form {
+            flex-direction: column;
+            justify-content: flex-start;
+            padding: 60px 80px 70px;
+
+            &__field-box {
+                width: 100%;
+                margin-top: 15px;
+            }
+
+            &__field-box--textarea {
+                order: 1;
+            }
+
+            &__field-box--end-date {
+                margin-top: 15px;
+            }
+
+            &__submit-box {
+                order: 2;
+                margin-top: 30px;
+            }
+        }
+    }
+}
+
+@media($media-sm) {
+    .add-event-modal {
+        &__head {
+            justify-content: center;
+            padding: 120px 0 0;
+        }
+
+        &__close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+
+        .form {
+            padding: 12px 40px 20px;
+
+            &__field-box {
+                margin-top: 12px;
+            }
+
+            &__field-box--end-date {
+                margin-top: 12px;
+            }
+
+            &__submit-box {
+                margin-top: 24px;
+            }
+        }
+    }
+}

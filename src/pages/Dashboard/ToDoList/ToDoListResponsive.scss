@@ -1,6 +1,6 @@
 @media($media-xl) {
     .todos {
-        padding: 24px 20px 20px;
+        padding: 16px 20px;
         height: 240px;
 
         &__head {
@@ -8,7 +8,13 @@
 
             h5 {
                 @include h6;
+
+                line-height: 38px;
             }
+        }
+
+        &__customizing {
+            margin-bottom: 22px;
         }
 
         &__empty {
@@ -28,15 +34,14 @@
 
 @media($media-lg) {
     .todos {
-        padding: 16px 20px 20px;
         height: 300px;
         max-width: none;
 
         &__head {
-            margin-bottom: 12px;
-
             h5 {
                 @include h5;
+
+                line-height: 38px;
             }
         }
 
@@ -57,7 +62,7 @@
 
 @media($media-sm) {
     .todos {
-        padding: 18px 15px;
+        padding: 15px;
         height: auto;
         max-height: 700px;
 

@@ -1,53 +1,80 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchTodos } from '../../../store/todosSlice';
+import { useSortable } from '@dnd-kit/sortable';
 import ToDoItem from './ToDoItem/ToDoItem';
+import Tippy from '@tippyjs/react';
+import { CSS } from '@dnd-kit/utilities';
 import boardIcon from '../../../assets/img/dashboard/toDoList/board.svg';
 import './ToDoList.scss';
-import fileIcon from "../../../assets/img/general/file.svg";
-import calendarIcon from "../../../assets/img/general/calendar.svg";
 
-function ToDoList() {
+function ToDoList({ id, isCustomizing, getCustomizingClass }) {
     const dispatch = useDispatch();
     const todos = useSelector(state => state.todos.data);
+    const {
+        attributes,
+        listeners,
+        setNodeRef,
+        transform,
+        transition,
+    } = useSortable({id});
+    const style = {
+        transform: CSS.Transform.toString(transform),
+        transition,
+    };
 
     useEffect(() => {
         dispatch(fetchTodos());
     }, []);
 
-    function areEmptyTodos() {
-        return todos ? '' : 'empty';
-    }
-
     return (
-        <div className={`todos dashboard-block ${areEmptyTodos()}`} id="toDoList">
-            <div className="todos__head">
-                <h5>
-                    To Do List
-                </h5>
-            </div>
+        <Tippy
+            className="tip"
+            content={<p>Drag the section to your desired spot on the dashboard.<span className="tip-triangle tip-bottom"></span></p>}
+            placement="top"
+            disabled={!isCustomizing}
+        >
+            <div className={`todos dashboard-block ${getCustomizingClass()}`} id="toDoList" ref={setNodeRef} style={style} {...attributes} {...listeners}>
+                {
+                    !isCustomizing ? (
+                        <div className="todos__head">
+                            <h5>
+                                To Do List
+                            </h5>
+                        </div>
+                    ) : (
+                        <div className="todos__customizing">
+                            <div className="todos__delete">
+                                <div></div>
+                                <div></div>
+                            </div>
 
-            <div className="todos__empty">
-                <img src={boardIcon} width="38" height="50" alt="board"/>
-
-                <h6>
-                    There’s nothing in your to do list right now
-                </h6>
-            </div>
-
-            <div className="todos__list">
-                {/*<?php include './src/components/dashboard/toDoList/toDoItem/toDoItem.php'; ?>*/}
-                {/*<?php include './src/components/dashboard/toDoList/toDoItem/toDoItem.php'; ?>*/}
-                {/*<?php include './src/components/dashboard/toDoList/toDoItem/toDoItem.php'; ?>*/}
-                {/*<?php include './src/components/dashboard/toDoList/toDoItem/toDoItem.php'; ?>*/}
-                {/*<?php include './src/components/dashboard/toDoList/toDoItem/toDoItem.php'; ?>*/}
-                {/*<?php include './src/components/dashboard/toDoList/toDoItem/toDoItem.php'; ?>*/}
+                            <h6>
+                                Remove from Dashboard
+                            </h6>
+                        </div>
+                    )
+                }
 
                 {
-                    todos && todos.map((todo) => <ToDoItem key={todo.id} todo={todo} />)
+                    !todos ? (
+                        <div className="todos__empty">
+                            <img src={boardIcon} width="38" height="50" alt="board"/>
+
+                            <h6>
+                                There’s nothing in your to do list right now
+                            </h6>
+                        </div>
+                    ) : (
+                        <div className="todos__list">
+                            {
+                                todos.map((todo) => <ToDoItem key={todo.id} todo={todo} />)
+                            }
+                        </div>
+                    )
                 }
             </div>
-        </div>
+        </Tippy>
     );
 }
 

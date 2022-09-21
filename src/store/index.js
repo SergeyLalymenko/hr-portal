@@ -3,6 +3,7 @@ import userSlice from './userSlice';
 import notificationsSlice from './notificationsSlice';
 import todosSlice from './todosSlice';
 import eventsSlice from './eventsSlice';
+import dashboardComponentsSlice from './dashboardComponentsSlice';
 import thunk from 'redux-thunk';
 
 const rootReducer = combineReducers({
@@ -10,6 +11,7 @@ const rootReducer = combineReducers({
     notifications: notificationsSlice,
     todos: todosSlice,
     events: eventsSlice,
+    dashboardComponents: dashboardComponentsSlice,
 });
 
 export const store = configureStore({
