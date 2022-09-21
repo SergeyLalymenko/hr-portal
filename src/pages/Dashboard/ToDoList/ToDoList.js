@@ -8,7 +8,7 @@ import { CSS } from '@dnd-kit/utilities';
 import boardIcon from '../../../assets/img/dashboard/toDoList/board.svg';
 import './ToDoList.scss';
 
-function ToDoList({ id, isCustomizing, getCustomizingClass }) {
+function ToDoList({ id, isCustomizing, getCustomizingClass, onDeleteComponent }) {
     const dispatch = useDispatch();
     const todos = useSelector(state => state.todos.data);
     const {
@@ -34,7 +34,7 @@ function ToDoList({ id, isCustomizing, getCustomizingClass }) {
             placement="top"
             disabled={!isCustomizing}
         >
-            <div className={`todos dashboard-block ${getCustomizingClass()}`} id="toDoList" ref={setNodeRef} style={style} {...attributes} {...listeners}>
+            <div className={`todos dashboard-block ${getCustomizingClass()}`} ref={setNodeRef} style={style} {...attributes} {...listeners}>
                 {
                     !isCustomizing ? (
                         <div className="todos__head">
@@ -43,7 +43,7 @@ function ToDoList({ id, isCustomizing, getCustomizingClass }) {
                             </h5>
                         </div>
                     ) : (
-                        <div className="todos__customizing">
+                        <div className="todos__customizing" onClick={() => onDeleteComponent(id)}>
                             <div className="todos__delete">
                                 <div></div>
                                 <div></div>

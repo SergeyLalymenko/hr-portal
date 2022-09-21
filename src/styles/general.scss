@@ -120,3 +120,37 @@ button {
     border-right: 5px solid transparent;
     border-top: 10px solid $colorWhite;
 }
+.field-box {
+    position: relative;
+    width: 100%;
+
+    .select {
+        background-image: url('../assets/img/dashboard/events/select-arrow.svg');
+        background-position-x: calc(100% - 12px);
+        background-position-y: 50%;
+        background-repeat: no-repeat;
+    }
+
+    .error {
+        background-image: url('../assets/img/general/field-error.svg');
+        border-color: $colorError;
+    }
+
+    .success {
+        background-image: url('../assets/img/general/field-success.svg');
+        border-color: $colorGreen;
+    }
+
+    label {
+        z-index: 19;
+        font-size: 1rem;
+        line-height: 1;
+        font-weight: 400;
+        color: $colorAcGray;
+        position: absolute;
+        top: 11px;
+        left: 12px;
+        pointer-events: none;
+        transition: .2s;
+    }
+}

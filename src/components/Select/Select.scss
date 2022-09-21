@@ -1,0 +1,109 @@
+@import './src/styles/variables/index';
+
+.select {
+    position: relative;
+    width: 100%;
+    height: 38px;
+    background: $colorWhite;
+
+    &:hover {
+        display: block;
+        z-index: 10;
+
+        + label {
+            font-size: 0.625rem;
+            top: 3px!important;
+        }
+
+        .select__head {
+            border-radius: 4px 4px 0 0;
+            border-bottom: none;
+        }
+
+        .select__line {
+            display: block;
+        }
+
+        .select__body {
+            display: block;
+        }
+    }
+
+    &__head {
+        display: flex;
+        height: 100%;
+        border: 1px solid $colorAcGray;
+        border-radius: 4px;
+        padding: 12px 36px 0 12px;
+        cursor: pointer;
+    }
+
+    &__current {
+        font-size: 1rem;
+        line-height: 1.375;
+        font-weight: 400;
+        color: $colorDarkBlue;
+    }
+
+    &__line {
+        display: none;
+        position: absolute;
+        bottom: 0;
+        left: 8px;
+        width: calc(100% - 16px);
+        height: 1px;
+        background: $colorAcGray;
+    }
+
+    &__body {
+        display: none;
+        border: 1px solid $colorAcGray;
+        border-radius: 0 0 4px 4px;
+        border-top: none;
+        position: absolute;
+        background: $colorWhite;
+        padding-bottom: 12px;
+        left: 0;
+        right: 0;
+        top: 100%;
+    }
+
+    &__item {
+        display: flex;
+        align-items: center;
+        font-size: 1rem;
+        line-height: 1.375;
+        font-weight: 400;
+        color: $colorDarkBlue;
+        margin-top: 4px;
+        padding: 4px 12px;
+        cursor: pointer;
+
+        &:hover {
+            background-color: $colorLightGray;
+        }
+
+        &:last-child {
+            border-radius: 0 0 4px 4px;
+        }
+    }
+}
+
+.select.choosed {
+    + label {
+        font-size: 0.625rem;
+        top: 3px!important;
+    }
+}
+
+.select.error {
+    * {
+        border-color: $colorError;
+    }
+}
+
+.select.success {
+    * {
+        border-color: $colorGreen;
+    }
+}

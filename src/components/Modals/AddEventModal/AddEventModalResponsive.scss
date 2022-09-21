@@ -26,6 +26,11 @@
                 margin-top: 15px;
             }
 
+            &__select-box {
+                width: 100%;
+                margin-top: 15px;
+            }
+
             &__field-box--textarea {
                 order: 1;
             }
@@ -59,6 +64,10 @@
             padding: 12px 40px 20px;
 
             &__field-box {
+                margin-top: 12px;
+            }
+
+            &__select-box {
                 margin-top: 12px;
             }
 

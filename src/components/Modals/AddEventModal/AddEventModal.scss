@@ -51,16 +51,6 @@
             margin-top: 12px;
             position: relative;
 
-            select {
-                appearance: none;
-                background: url('../../../assets/img/dashboard/events/select-arrow.svg')no-repeat calc(100% - 16px) 50%;
-                cursor: pointer;
-
-                option:first-child {
-                    display: none;
-                }
-            }
-
             input {
                 background: url('../../../assets/img/general/calendar.svg')no-repeat calc(100% - 16px) 50%;
                 cursor: pointer;
@@ -78,11 +68,15 @@
                 transition: .2s;
             }
 
-            select:active + label,
             textarea:focus + label {
                 font-size: 0.625rem;
                 top: 3px!important;
             }
+        }
+
+        &__select-box {
+            width: calc(50% - 10px);
+            margin-top: 12px;
         }
 
         &__field-box.active {

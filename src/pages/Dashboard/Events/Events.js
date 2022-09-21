@@ -11,7 +11,7 @@ import eventsCalendarIcon from '../../../assets/img/dashboard/events/calendar.sv
 import '../../../styles/reactDatepicker/reactDatepicker.scss';
 import './Events.scss';
 
-function Events({ id, isCustomizing, getCustomizingClass }) {
+function Events({ id, isCustomizing, getCustomizingClass, onDeleteComponent }) {
     const dispatch = useDispatch();
     const events = useSelector(state => state.events.data);
     const [filteredEvents, setFilteredEvents] = useState([]);
@@ -72,7 +72,7 @@ function Events({ id, isCustomizing, getCustomizingClass }) {
             placement="top"
             disabled={!isCustomizing}
         >
-            <div className={`events dashboard-block ${getCustomizingClass()}`} id="events" ref={setNodeRef} style={style} {...attributes} {...listeners}>
+            <div className={`events dashboard-block ${getCustomizingClass()}`} ref={setNodeRef} style={style} {...attributes} {...listeners}>
                 {
                     !isCustomizing ? (
                         <div className="events__head">
@@ -103,7 +103,7 @@ function Events({ id, isCustomizing, getCustomizingClass }) {
                             </div>
                         </div>
                     ) : (
-                        <div className="events__customizing">
+                        <div className="events__customizing" onClick={() => onDeleteComponent(id)}>
                             <div className="events__delete">
                                 <div></div>
                                 <div></div>

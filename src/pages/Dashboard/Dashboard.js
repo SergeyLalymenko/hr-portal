@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import {useDispatch, useSelector} from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
     DndContext,
     closestCenter,
@@ -9,7 +9,7 @@ import {
     useSensors,
 } from '@dnd-kit/core';
 import { arrayMove, SortableContext, sortableKeyboardCoordinates } from '@dnd-kit/sortable';
-import { fetchDashboardComponents, updateDashboardComponentsLocal } from '../../store/dashboardComponentsSlice';
+import { fetchDashboardComponents, updateDashboardComponentsLocal, deleteDashboardComponent } from '../../store/dashboardComponentsSlice';
 import Tippy from '@tippyjs/react';
 import ToDoList from './ToDoList/ToDoList';
 import Events from './Events/Events';
@@ -20,15 +20,27 @@ function Dashboard({ renderUserName }) {
     const dashboardComponents = useSelector((state) => state.dashboardComponents.data);
     const [isCustomizing, setIsCustomizing] = useState(false);
     const sensors = useSensors(
-        useSensor(PointerSensor),
+        useSensor(PointerSensor, {
+            activationConstraint: {
+                distance: 10,
+            },
+        }),
         useSensor(KeyboardSensor, {
             coordinateGetter: sortableKeyboardCoordinates,
+            activationConstraint: {
+                distance: 10,
+            },
         }),
     );
 
     useEffect(() => {
         dispatch(fetchDashboardComponents());
     }, [dispatch]);
+
+    function onDeleteComponent(id) {
+        console.log(id);
+        dispatch(deleteDashboardComponent(id));
+    }
 
     function onDragEnd({ active, over }) {
         if (active.id !== over.id) {
@@ -76,7 +88,7 @@ function Dashboard({ renderUserName }) {
                 </Tippy>
             </div>
 
-            <div className="dashboard__body" id="draggingParent">
+            <div className="dashboard__body">
                 {
                     dashboardComponents && (
                         <DndContext
@@ -97,6 +109,7 @@ function Dashboard({ renderUserName }) {
                                             id={componentData.id}
                                             isCustomizing={isCustomizing}
                                             getCustomizingClass={getCustomizingClass}
+                                            onDeleteComponent={onDeleteComponent}
                                         />
                                     })
                                 }

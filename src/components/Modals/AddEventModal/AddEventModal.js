@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Formik, Form, Field } from 'formik';
 import { createEvent } from '../../../store/eventsSlice';
+import Select from '../../Select/Select';
 import DatePicker from 'react-datepicker';
 import '../../../styles/reactDatepicker/reactDatepicker.scss';
 import './AddEventModal.scss';
@@ -12,6 +13,31 @@ function AddEventModal({ toggleIsModalOpened }) {
         startDate: false,
         endDate: false,
     });
+    const eventTypeOptions = [
+        {
+            id: 1,
+            value: '*Anniversary',
+            disabled: false,
+        },
+        {
+            id: 2,
+            value: '*Anniversary2',
+            disabled: false,
+        },
+    ];
+
+    const sharedWithOptions = [
+        {
+            id: 1,
+            value: '*All Phonexa Employees',
+            disabled: false,
+        },
+        {
+            id: 2,
+            value: '*All Phonexa Employees2',
+            disabled: false,
+        },
+    ];
 
     function checkTargetEl(e) {
         e.target.classList.contains('modal') && toggleIsModalOpened();
@@ -40,6 +66,11 @@ function AddEventModal({ toggleIsModalOpened }) {
             startDate: null,
             endDate: null,
         };
+    }
+
+    function setCustomFieldValue(value, name, touched, setFieldValue, setFieldTouched) {
+        setTouched(touched, name, setFieldTouched);
+        setFieldValue(name, value);
     }
 
     function validateForm(values) {
@@ -82,37 +113,27 @@ function AddEventModal({ toggleIsModalOpened }) {
     }
 
     function renderForm() {
-        return ({ errors, touched, isSubmitting, values, setFieldValue, setFieldTouched, isValid, dirty }) => (
-            <Form className="add-event-modal__form form flex-lg-column" autoComplete="off" noValidate>
-                <div className={`form__field-box ${values.eventType ? 'active' : ''}`}>
-                    <Field className={`form__field
-                            ${getFieldStatus(errors.eventType, touched.eventType)}
-                       `}
-                       name="eventType"
-                       as="select"
-                    >
-                        <option value="" disabled></option>
-                        <option value="*Anniversary">*Anniversary</option>
-                        <option value="*Anniversary2">*Anniversary2</option>
-                    </Field>
+        return ({ errors, touched, values, setFieldValue, setFieldTouched, isValid, dirty }) => (
+            <Form className="add-event-modal__form form" autoComplete="off" noValidate>
+                <Select
+                    boxClassName="form__select-box"
+                    selectClassName={`${getFieldStatus(errors.eventType, touched.eventType)}`}
+                    options={eventTypeOptions}
+                    currentValue={values.eventType}
+                    setCurrentValue={(value) => setCustomFieldValue(value, 'eventType', touched.eventType, setFieldValue, setFieldTouched)}
+                    label="Event type"
+                    name="eventType"
+                />
 
-                    <label>Event Type</label>
-                </div>
-
-                <div className={`form__field-box ${values.sharedWith ? 'active' : ''}`}>
-                    <Field className={`form__field
-                            ${getFieldStatus(errors.sharedWith, touched.sharedWith)}
-                       `}
-                       name="sharedWith"
-                       as="select"
-                    >
-                        <option value="" disabled></option>
-                        <option value="*Anniversary">*All Phonexa Employees</option>
-                        <option value="*Anniversary2">*All Phonexa Employees2</option>
-                    </Field>
-
-                    <label>Shared With</label>
-                </div>
+                <Select
+                    boxClassName="form__select-box"
+                    selectClassName={`${getFieldStatus(errors.sharedWith, touched.sharedWith)}`}
+                    options={sharedWithOptions}
+                    currentValue={values.sharedWith}
+                    setCurrentValue={(value) => setCustomFieldValue(value, 'sharedWith', touched.sharedWith, setFieldValue, setFieldTouched)}
+                    label="Shared With"
+                    name="sharedWith"
+                />
 
                 <div className={`form__field-box ${areDatepickersOpened.startDate || values.startDate ? 'active' : ''}`}>
                     <DatePicker
@@ -121,10 +142,7 @@ function AddEventModal({ toggleIsModalOpened }) {
                         `}
                         selected={values.startDate}
                         maxDate={values.endDate}
-                        onChange={(date) => {
-                            setTouched(touched.startDate, 'startDate', setFieldTouched);
-                            setFieldValue('startDate', date);
-                        }}
+                        onChange={(date) => setCustomFieldValue(date, 'startDate', touched.startDate, setFieldValue, setFieldTouched)}
                         onBlur={() => setTouched(touched.startDate, 'startDate', setFieldTouched)}
                         onCalendarOpen={() => onDatepickersOpenedToggle('startDate', true)}
                         onCalendarClose={() => onDatepickersOpenedToggle('startDate', false)}
@@ -153,10 +171,7 @@ function AddEventModal({ toggleIsModalOpened }) {
                         `}
                         selected={values.endDate}
                         minDate={values.startDate}
-                        onChange={(date) => {
-                            setTouched(touched.endDate, 'endDate', setFieldTouched);
-                            setFieldValue('endDate', date);
-                        }}
+                        onChange={(date) => setCustomFieldValue(date, 'endDate', touched.endDate, setFieldValue, setFieldTouched)}
                         onBlur={() => setTouched(touched.endDate, 'endDate', setFieldTouched)}
                         onCalendarOpen={() => onDatepickersOpenedToggle('endDate', true)}
                         onCalendarClose={() => onDatepickersOpenedToggle('endDate', false)}
@@ -168,7 +183,7 @@ function AddEventModal({ toggleIsModalOpened }) {
                 </div>
 
                 <div className="form__submit-box">
-                    <button className={`form__submit ${!isValid || !dirty ? 'disabled' : ''}`} id="addEventBtn" type="submit">
+                    <button className={`form__submit ${!isValid || !dirty ? 'disabled' : ''}`} type="submit">
                         <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
                              xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -198,10 +213,10 @@ function AddEventModal({ toggleIsModalOpened }) {
                         </div>
                     </div>
 
-                    <Formik id="addEventForm"
-                            initialValues={getInitialValues()}
-                            validate={validateForm}
-                            onSubmit={onFormSubmit}
+                    <Formik
+                        initialValues={getInitialValues()}
+                        validate={validateForm}
+                        onSubmit={onFormSubmit}
                     >
                         {renderForm()}
                     </Formik>
