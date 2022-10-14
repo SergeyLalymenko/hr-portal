@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import Notifications from '../Notifications/Notifications';
 import logo from '../../assets/img/header/logo.svg';
-import searchIcon from '../../assets/img/header/search.svg';
 import './Header.scss';
 
 function Header({
@@ -33,18 +34,23 @@ function Header({
         <header className="header">
             <div className="header__wrapper">
                 <Link to="/" className="header__logo">
-                    <img src={logo} width="126" height="32" alt="logo"/>
+                    <img
+                        src={logo}
+                        width="126"
+                        height="32"
+                        alt="logo"
+                    />
                 </Link>
 
                 <div className="header__row">
                     <div className={`header__search ${isActiveSearch ? 'active' : ''}`}>
-                        <input type="search" placeholder="Search"/>
+                        <input
+                            type="search"
+                            placeholder="Search"
+                        />
 
-                        <img
-                            src={searchIcon}
-                            width="22"
-                            height="22"
-                            alt="search"
+                        <FontAwesomeIcon
+                            icon={faMagnifyingGlass}
                             onClick={() => setIsActiveSearch(!isActiveSearch)}
                         />
                     </div>
@@ -75,7 +81,10 @@ function Header({
                         <div></div>
                     </div>
 
-                    <Notifications areNotificationsOpened={areNotificationsOpened} toggleNotifications={toggleNotifications} />
+                    <Notifications
+                        areNotificationsOpened={areNotificationsOpened}
+                        toggleNotifications={toggleNotifications}
+                    />
                 </div>
             </div>
         </header>

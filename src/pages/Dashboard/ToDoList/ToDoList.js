@@ -4,11 +4,17 @@ import { fetchTodos } from '../../../store/todosSlice';
 import { useSortable } from '@dnd-kit/sortable';
 import ToDoItem from './ToDoItem/ToDoItem';
 import Tippy from '@tippyjs/react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faClipboardList } from '@fortawesome/free-solid-svg-icons';
 import { CSS } from '@dnd-kit/utilities';
-import boardIcon from '../../../assets/img/dashboard/toDoList/board.svg';
 import './ToDoList.scss';
 
-function ToDoList({ id, isCustomizing, getCustomizingClass, onDeleteComponent }) {
+function ToDoList({
+        id,
+        isCustomizing,
+        getCustomizingClass,
+        onDeleteComponent
+    }) {
     const dispatch = useDispatch();
     const todos = useSelector(state => state.todos.data);
     const {
@@ -34,7 +40,13 @@ function ToDoList({ id, isCustomizing, getCustomizingClass, onDeleteComponent })
             placement="top"
             disabled={!isCustomizing}
         >
-            <div className={`todos dashboard-block ${getCustomizingClass()}`} ref={setNodeRef} style={style} {...attributes} {...listeners}>
+            <div
+                className={`todos dashboard-block ${getCustomizingClass()}`}
+                ref={setNodeRef}
+                style={style}
+                {...attributes}
+                {...listeners}
+            >
                 {
                     !isCustomizing ? (
                         <div className="todos__head">
@@ -59,7 +71,7 @@ function ToDoList({ id, isCustomizing, getCustomizingClass, onDeleteComponent })
                 {
                     !todos ? (
                         <div className="todos__empty">
-                            <img src={boardIcon} width="38" height="50" alt="board"/>
+                            <FontAwesomeIcon icon={faClipboardList} />
 
                             <h6>
                                 There’s nothing in your to do list right now

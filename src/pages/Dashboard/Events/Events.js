@@ -6,8 +6,9 @@ import EventsItem from './EventsItem/EventsItem';
 import AddEventModal from '../../../components/Modals/AddEventModal/AddEventModal';
 import DatePicker from 'react-datepicker';
 import Tippy from '@tippyjs/react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCalendarDays } from '@fortawesome/free-solid-svg-icons';
 import { CSS } from '@dnd-kit/utilities';
-import eventsCalendarIcon from '../../../assets/img/dashboard/events/calendar.svg';
 import '../../../styles/reactDatepicker/reactDatepicker.scss';
 import './Events.scss';
 
@@ -72,7 +73,13 @@ function Events({ id, isCustomizing, getCustomizingClass, onDeleteComponent }) {
             placement="top"
             disabled={!isCustomizing}
         >
-            <div className={`events dashboard-block ${getCustomizingClass()}`} ref={setNodeRef} style={style} {...attributes} {...listeners}>
+            <div
+                className={`events dashboard-block ${getCustomizingClass()}`}
+                ref={setNodeRef}
+                style={style}
+                {...attributes}
+                {...listeners}
+            >
                 {
                     !isCustomizing ? (
                         <div className="events__head">
@@ -89,9 +96,9 @@ function Events({ id, isCustomizing, getCustomizingClass, onDeleteComponent }) {
                                 )
                             }
 
-                            <div className="events__datepicker-box">
+                            <div className="events__datepicker-box form-control">
                                 <DatePicker
-                                    className="events__datepicker"
+                                    className="events__datepicker datepicker"
                                     selected={startDate}
                                     onChange={onDatepickerChange}
                                     startDate={startDate}
@@ -119,7 +126,7 @@ function Events({ id, isCustomizing, getCustomizingClass, onDeleteComponent }) {
                 {
                     !filteredEvents.length && (
                         <div className="events__empty">
-                            <img src={eventsCalendarIcon} width="44" height="50" alt="calendar" />
+                            <FontAwesomeIcon icon={faCalendarDays} />
 
                             <h6>
                                 No scheduled events for this date/range

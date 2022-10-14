@@ -6,6 +6,12 @@
     padding: 8px 5px 8px 0;
     border-top: 1px solid $colorLightGray;
 
+    &__type {
+        font-size: 14px;
+        color: $colorAcGray;
+        min-width: 22px;
+    }
+
     &__title {
         color: $colorLightBlue;
         margin-left: 4px;
@@ -23,11 +29,12 @@
     }
 
     &__unread-marker {
-        width: 12px;
-        height: 12px;
+        min-width: 12px;
         margin-left: 14px;
 
-        img {
+        > svg {
+            font-size: 12px;
+            color: $colorLightBlue;
             display: none;
         }
     }
@@ -39,10 +46,8 @@
     }
 
     .notification__unread-marker {
-        img {
+        > svg {
             display: block;
         }
     }
 }
-
-@import './NotificationItemResponsive';

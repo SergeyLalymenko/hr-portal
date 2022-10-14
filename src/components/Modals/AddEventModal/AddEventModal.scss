@@ -51,11 +51,6 @@
             margin-top: 12px;
             position: relative;
 
-            input {
-                background: url('../../../assets/img/general/calendar.svg')no-repeat calc(100% - 16px) 50%;
-                cursor: pointer;
-            }
-
             label {
                 font-size: 1rem;
                 line-height: 1;
@@ -104,15 +99,15 @@
             }
         }
 
-        .success {
-            border-color: $colorGreen;
-            background: url('../../../assets/img/general/field-success.svg')no-repeat calc(100% - 8px) 50%;
-        }
-
-        .error {
-            border-color: $colorRed;
-            background: url('../../../assets/img/general/field-error.svg')no-repeat calc(100% - 8px) 50%;
-        }
+        //.success {
+        //    border-color: $colorGreen;
+        //    background: url('../../../assets/img/general/field-success.svg')no-repeat calc(100% - 8px) 50%;
+        //}
+        //
+        //.error {
+        //    border-color: $colorRed;
+        //    background: url('../../../assets/img/general/field-error.svg')no-repeat calc(100% - 8px) 50%;
+        //}
 
         &__field--textarea {
             background-position-y: 8px;

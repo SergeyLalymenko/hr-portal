@@ -53,7 +53,10 @@
             }
         }
 
-        img {
+        > svg {
+            font-size: 16px;
+            color: $colorAcGray;
+            padding: 3px;
             cursor: pointer;
         }
     }

@@ -27,7 +27,7 @@ function Select({
     }
 
     return (
-        <div className={`field-box ${getBoxClassName()}`}>
+        <div className={`form-control ${getBoxClassName()}`}>
             <div className={`select ${getChoosedClass()} ${getSelectClassName()}`}>
                 <div className="select__head">
                     <span className="select__current">{currentValue}</span>

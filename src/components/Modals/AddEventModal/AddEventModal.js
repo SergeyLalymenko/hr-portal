@@ -135,9 +135,9 @@ function AddEventModal({ toggleIsModalOpened }) {
                     name="sharedWith"
                 />
 
-                <div className={`form__field-box ${areDatepickersOpened.startDate || values.startDate ? 'active' : ''}`}>
+                <div className={`form__field-box form-control ${areDatepickersOpened.startDate || values.startDate ? 'active' : ''}`}>
                     <DatePicker
-                        className={`form__field
+                        className={`form__field datepicker
                             ${getFieldStatus(errors.startDate, touched.startDate)}
                         `}
                         selected={values.startDate}
@@ -153,8 +153,8 @@ function AddEventModal({ toggleIsModalOpened }) {
                     <label>Start Date</label>
                 </div>
 
-                <div className={`form__field-box form__field-box--textarea ${values.description ? 'active' : ''}`}>
-                    <Field className={`form__field form__field--textarea
+                <div className={`form__field-box form-control form__field-box--textarea ${values.description ? 'active' : ''}`}>
+                    <Field className={`form__field textarea form__field--textarea
                             ${getFieldStatus(errors.description, touched.description)}
                         `}
                         as="textarea"
@@ -164,9 +164,9 @@ function AddEventModal({ toggleIsModalOpened }) {
                     <label>Description</label>
                 </div>
 
-                <div className={`form__field-box form__field-box--end-date ${areDatepickersOpened.endDate || values.endDate ? 'active' : ''}`}>
+                <div className={`form__field-box form-control form__field-box--end-date ${areDatepickersOpened.endDate || values.endDate ? 'active' : ''}`}>
                     <DatePicker
-                        className={`form__field
+                        className={`form__field datepicker
                             ${getFieldStatus(errors.endDate, touched.endDate)}
                         `}
                         selected={values.endDate}

@@ -30,6 +30,12 @@
         align-items: center;
     }
 
+    &__type {
+        font-size: 14px;
+        color: $colorAcGray;
+        min-width: 22px;
+    }
+
     &__title {
         margin-left: 4px;
         margin-right: 20px;
@@ -86,10 +92,18 @@
     }
 
     &__mark {
-        padding: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 8px;
         border-radius: 4px;
         margin-left: 8px;
         cursor: pointer;
+
+        svg {
+            font-size: 16px;
+            color: $colorWhite;
+        }
     }
 
     &__mark--dislike {

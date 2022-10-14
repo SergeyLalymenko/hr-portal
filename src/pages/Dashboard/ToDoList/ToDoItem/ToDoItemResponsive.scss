@@ -58,17 +58,12 @@
         }
 
         &__mark {
-            padding: 6px;
+            padding: 12px;
             border-radius: 5px;
             margin-left: 10px;
 
             &:first-child {
                 margin-left: 20px;
-            }
-
-            img {
-                width: 28px;
-                height: 28px;
             }
         }
     }

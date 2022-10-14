@@ -3,8 +3,12 @@ import './EventsItem.scss';
 function EventsItem({ event }) {
     return (
         <div className="event">
-            <img className="event__avatar" src={event.avatar} width="38"
-                 height="38"/>
+            <img
+                className="event__avatar"
+                src={event.avatar}
+                width="38"
+                height="38"
+            />
 
             <div className="event__content">
                 <h6 className="event__name" title={event.userFullname}>

@@ -1,15 +1,14 @@
-import fileIcon from '../../../../assets/img/general/file.svg';
-import calendarIcon from '../../../../assets/img/general/calendar.svg';
-import likeIcon from '../../../../assets/img/dashboard/toDoList/toDoItem/like.svg';
-import dislikeIcon from '../../../../assets/img/dashboard/toDoList/toDoItem/dislike.svg';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFile, faCalendar } from '@fortawesome/free-regular-svg-icons';
+import { faThumbsUp, faThumbsDown } from '@fortawesome/free-solid-svg-icons';
 import './ToDoItem.scss';
 
 function ToDoItem({ todo }) {
-    function getMarker(type) {
+    function getMarkerIcon(type) {
         switch(type) {
-            case 'file': return fileIcon;
-            case 'calendar': return calendarIcon;
-            default: return fileIcon;
+            case 'file': return faFile;
+            case 'calendar': return faCalendar;
+            default: return faFile;
         }
     }
 
@@ -17,8 +16,10 @@ function ToDoItem({ todo }) {
         <div className="todos-item">
             <div className="todos-item__wrapper">
                 <div className="todos-item__content">
-                    <img className="todos-item__type" src={getMarker(todo.type)} width="22" height="22"
-                         alt="file"/>
+                    <FontAwesomeIcon
+                        className="todos-item__type"
+                        icon={getMarkerIcon(todo.type)}
+                    />
 
                     <h6 className="todos-item__title" title={todo.title}>
                         {todo.title}
@@ -37,13 +38,11 @@ function ToDoItem({ todo }) {
 
                 <div className="todos-item__hover">
                     <div className="todos-item__mark todos-item__mark--dislike">
-                        <img src={dislikeIcon} width="22" height="22"
-                             alt="dislike"/>
+                        <FontAwesomeIcon icon={faThumbsDown} />
                     </div>
 
                     <div className="todos-item__mark todos-item__mark--like">
-                        <img src={likeIcon} width="22" height="22"
-                             alt="like"/>
+                        <FontAwesomeIcon icon={faThumbsUp} />
                     </div>
                 </div>
             </div>

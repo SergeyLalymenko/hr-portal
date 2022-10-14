@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import {useDispatch, useSelector } from 'react-redux';
 import { fetchNotifications, setNotification } from '../../store/notificationsSlice';
-import NotificationItem from '../NotificationItem/NotificationItem';
+import NotificationItem from './NotificationItem/NotificationItem';
 import './Notifications.scss';
 
 function Notifications({ areNotificationsOpened, toggleNotifications }) {

@@ -28,9 +28,8 @@
         }
 
         &__empty {
-            img {
-                width: 31px;
-                height: 35px;
+            > svg {
+                font-size: 35px;
             }
 
             h6 {
@@ -62,9 +61,8 @@
         }
 
         &__empty {
-            img {
-                width: 44px;
-                height: 50px;
+            > svg {
+                font-size: 50px;
             }
 
             h6 {
