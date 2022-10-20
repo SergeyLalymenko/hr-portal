@@ -9,6 +9,7 @@ import Tippy from '@tippyjs/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarDays } from '@fortawesome/free-solid-svg-icons';
 import { CSS } from '@dnd-kit/utilities';
+import classNames from 'classnames';
 import '../../../styles/reactDatepicker/reactDatepicker.scss';
 import './Events.scss';
 
@@ -74,7 +75,7 @@ function Events({ id, isCustomizing, getCustomizingClass, onDeleteComponent }) {
             disabled={!isCustomizing}
         >
             <div
-                className={`events dashboard-block ${getCustomizingClass()}`}
+                className={classNames('events', 'dashboard-block', getCustomizingClass())}
                 ref={setNodeRef}
                 style={style}
                 {...attributes}

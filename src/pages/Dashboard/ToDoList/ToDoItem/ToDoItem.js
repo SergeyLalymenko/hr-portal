@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFile, faCalendar } from '@fortawesome/free-regular-svg-icons';
 import { faThumbsUp, faThumbsDown } from '@fortawesome/free-solid-svg-icons';
+import classNames from 'classnames';
 import './ToDoItem.scss';
 
 function ToDoItem({ todo }) {
@@ -26,7 +27,7 @@ function ToDoItem({ todo }) {
                     </h6>
 
                     <div className="todos-item__description">
-                        <p className={`todos-item__marker ${todo.status}`}>
+                        <p className={classNames('todos-item__marker', todo.status)}>
                             {todo.status}
                         </p>
 

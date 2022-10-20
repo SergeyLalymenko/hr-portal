@@ -9,7 +9,11 @@ import {
     useSensors,
 } from '@dnd-kit/core';
 import { arrayMove, SortableContext, sortableKeyboardCoordinates } from '@dnd-kit/sortable';
-import { fetchDashboardComponents, updateDashboardComponentsLocal, deleteDashboardComponent } from '../../store/dashboardComponentsSlice';
+import {
+    fetchDashboardComponents,
+    updateDashboardComponentsLocal,
+    deleteDashboardComponent
+} from '../../store/dashboardComponentsSlice';
 import Tippy from '@tippyjs/react';
 import ToDoList from './ToDoList/ToDoList';
 import Events from './Events/Events';
@@ -82,7 +86,9 @@ function Dashboard({ renderUserName }) {
                         </svg>
 
                         <span>
-                            Customize
+                            {
+                                isCustomizing ? 'Done Customizing' : 'Customize'
+                            }
                         </span>
                     </button>
                 </Tippy>

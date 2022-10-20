@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import './Select.scss';
 
 function Select({
@@ -16,10 +17,6 @@ function Select({
         return selectClassName ? selectClassName : '';
     }
 
-    function getChoosedClass() {
-        return currentValue ? 'choosed' : '';
-    }
-
     function onSelectItemClick(option) {
         if(!option.disabled) {
             setCurrentValue(option.value);
@@ -27,10 +24,12 @@ function Select({
     }
 
     return (
-        <div className={`form-control ${getBoxClassName()}`}>
-            <div className={`select ${getChoosedClass()} ${getSelectClassName()}`}>
+        <div className={classNames('form-control', getBoxClassName())}>
+            <div className={classNames('select', { choosed: currentValue }, getSelectClassName())}>
                 <div className="select__head">
-                    <span className="select__current">{currentValue}</span>
+                    <span className="select__current">
+                        {currentValue}
+                    </span>
 
                     <div className="select__line"></div>
                 </div>
@@ -39,7 +38,11 @@ function Select({
                     {
                         options.map((option) => {
                             return (
-                                <div className="select__item" key={option.id} onClick={() => onSelectItemClick(option)}>
+                                <div
+                                    className="select__item"
+                                    key={option.id}
+                                    onClick={() => onSelectItemClick(option)}
+                                >
                                     {option.value}
                                 </div>
                             );

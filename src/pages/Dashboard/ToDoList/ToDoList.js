@@ -7,6 +7,7 @@ import Tippy from '@tippyjs/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClipboardList } from '@fortawesome/free-solid-svg-icons';
 import { CSS } from '@dnd-kit/utilities';
+import classNames from 'classnames';
 import './ToDoList.scss';
 
 function ToDoList({
@@ -41,7 +42,7 @@ function ToDoList({
             disabled={!isCustomizing}
         >
             <div
-                className={`todos dashboard-block ${getCustomizingClass()}`}
+                className={classNames('todos', 'dashboard-block', getCustomizingClass())}
                 ref={setNodeRef}
                 style={style}
                 {...attributes}

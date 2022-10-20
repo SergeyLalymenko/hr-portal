@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import classNames from 'classnames';
 import Notifications from '../Notifications/Notifications';
 import logo from '../../assets/img/header/logo.svg';
 import './Header.scss';
@@ -43,7 +44,7 @@ function Header({
                 </Link>
 
                 <div className="header__row">
-                    <div className={`header__search ${isActiveSearch ? 'active' : ''}`}>
+                    <div className={classNames('header__search', { active: isActiveSearch })}>
                         <input
                             type="search"
                             placeholder="Search"
@@ -55,7 +56,7 @@ function Header({
                         />
                     </div>
 
-                    <svg className={`header__notifications-icon ${getUnreadClass()} ${areNotificationsOpened ? 'open' : ''}`}
+                    <svg className={classNames('header__notifications-icon', getUnreadClass(), { open: areNotificationsOpened })}
                          onClick={toggleNotifications}
                          width="38"
                          height="38"
@@ -75,7 +76,10 @@ function Header({
                         {user && renderUserAvatar()}
                     </div>
 
-                    <div className={`header__burger ${isSidebarOpened ? 'active' : ''}`} onClick={toggleSidebar}>
+                    <div
+                        className={classNames('header__burger', { active: isSidebarOpened })}
+                        onClick={toggleSidebar}
+                    >
                         <div></div>
                         <div></div>
                         <div></div>

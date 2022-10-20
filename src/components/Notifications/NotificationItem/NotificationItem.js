@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFile, faCalendar } from '@fortawesome/free-regular-svg-icons';
 import { faCircleDot } from '@fortawesome/free-solid-svg-icons';
+import classNames from 'classnames';
 import './NotificationItem.scss';
 
 function NotificationItem({ item, markAsRead }) {
@@ -12,12 +13,8 @@ function NotificationItem({ item, markAsRead }) {
         }
     }
 
-    function getNewClass(newItem) {
-        return newItem ? 'new' : '';
-    }
-
     return (
-        <div className={`notification ${getNewClass(item.new)}`}>
+        <div className={classNames('notification', { new: item.new })}>
             <FontAwesomeIcon
                 className="notification__type"
                 icon={getMarkerIcon(item.marker)}

@@ -1,4 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
+import classNames from 'classnames';
 import './Sidebar.scss';
 
 function Sidebar({
@@ -15,11 +16,11 @@ function Sidebar({
     }
 
     return (
-        <div className={`sidebar ${isSidebarOpened ? 'active' : ''}`}>
+        <div className={classNames('sidebar', { active: isSidebarOpened })}>
             <div className="sidebar__background" onClick={toggleSidebar}></div>
 
             <div className="sidebar__toggler">
-                <Link to={'/dashboard'} className={`sidebar__route ${isActiveRoute('/dashboard')}`}>
+                <Link to={'/dashboard'} className={classNames('sidebar__route', isActiveRoute('/dashboard'))}>
                     <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect opacity="0.1" x="2" y="2" width="34" height="34" rx="4" fill="white"/>
                         <path
@@ -29,7 +30,7 @@ function Sidebar({
                     <h6>Dashboard</h6>
                 </Link>
 
-                <Link to={'/company'} className={`sidebar__route ${isActiveRoute('/company')}`}>
+                <Link to={'/company'} className={classNames('sidebar__route', isActiveRoute('/company'))}>
                     <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect opacity="0.1" x="2" y="2" width="34" height="34" rx="4" fill="white"/>
                         <path
@@ -39,7 +40,7 @@ function Sidebar({
                     <h6>Company</h6>
                 </Link>
 
-                <Link to={'/settings'} className={`sidebar__route ${isActiveRoute('/settings')}`}>
+                <Link to={'/settings'} className={classNames('sidebar__route', isActiveRoute('/settings'))}>
                     <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect opacity="0.1" x="2" y="2" width="34" height="34" rx="4" fill="white"/>
                         <path

@@ -4,6 +4,7 @@ import { Formik, Form, Field } from 'formik';
 import { createEvent } from '../../../store/eventsSlice';
 import Select from '../../Select/Select';
 import DatePicker from 'react-datepicker';
+import classNames from 'classnames';
 import '../../../styles/reactDatepicker/reactDatepicker.scss';
 import './AddEventModal.scss';
 
@@ -99,7 +100,9 @@ function AddEventModal({ toggleIsModalOpened }) {
         return errors;
     }
 
-    function onFormSubmit(values) {
+    function onFormSubmit(values, { setSubmitting }) {
+        setSubmitting(true);
+
         const newEvent = {
             ...values,
             userFullname: 'Some name',
@@ -109,15 +112,16 @@ function AddEventModal({ toggleIsModalOpened }) {
         }
 
         dispatch(createEvent(newEvent))
-            .then(() => toggleIsModalOpened());
+            .then(() => toggleIsModalOpened())
+            .finally(() => setSubmitting(false));
     }
 
     function renderForm() {
-        return ({ errors, touched, values, setFieldValue, setFieldTouched, isValid, dirty }) => (
+        return ({ errors, touched, values, setFieldValue, setFieldTouched, isValid, dirty, isSubmitting }) => (
             <Form className="add-event-modal__form form" autoComplete="off" noValidate>
                 <Select
                     boxClassName="form__select-box"
-                    selectClassName={`${getFieldStatus(errors.eventType, touched.eventType)}`}
+                    selectClassName={classNames(getFieldStatus(errors.eventType, touched.eventType))}
                     options={eventTypeOptions}
                     currentValue={values.eventType}
                     setCurrentValue={(value) => setCustomFieldValue(value, 'eventType', touched.eventType, setFieldValue, setFieldTouched)}
@@ -127,7 +131,7 @@ function AddEventModal({ toggleIsModalOpened }) {
 
                 <Select
                     boxClassName="form__select-box"
-                    selectClassName={`${getFieldStatus(errors.sharedWith, touched.sharedWith)}`}
+                    selectClassName={classNames(getFieldStatus(errors.sharedWith, touched.sharedWith))}
                     options={sharedWithOptions}
                     currentValue={values.sharedWith}
                     setCurrentValue={(value) => setCustomFieldValue(value, 'sharedWith', touched.sharedWith, setFieldValue, setFieldTouched)}
@@ -135,11 +139,9 @@ function AddEventModal({ toggleIsModalOpened }) {
                     name="sharedWith"
                 />
 
-                <div className={`form__field-box form-control ${areDatepickersOpened.startDate || values.startDate ? 'active' : ''}`}>
+                <div className={classNames('form__field-box', 'form-control', { active: areDatepickersOpened.startDate || values.startDate})}>
                     <DatePicker
-                        className={`form__field datepicker
-                            ${getFieldStatus(errors.startDate, touched.startDate)}
-                        `}
+                        className={classNames('form__field', 'datepicker', getFieldStatus(errors.startDate, touched.startDate))}
                         selected={values.startDate}
                         maxDate={values.endDate}
                         onChange={(date) => setCustomFieldValue(date, 'startDate', touched.startDate, setFieldValue, setFieldTouched)}
@@ -153,10 +155,23 @@ function AddEventModal({ toggleIsModalOpened }) {
                     <label>Start Date</label>
                 </div>
 
-                <div className={`form__field-box form-control form__field-box--textarea ${values.description ? 'active' : ''}`}>
-                    <Field className={`form__field textarea form__field--textarea
-                            ${getFieldStatus(errors.description, touched.description)}
-                        `}
+                <div className={
+                        classNames(
+                            'form__field-box',
+                            'form-control',
+                            'form__field-box--textarea',
+                            { active: values.description }
+                        )
+                    }>
+                    <Field
+                        className={
+                            classNames(
+                                'form__field',
+                                'textarea',
+                                'form__field--textarea',
+                                getFieldStatus(errors.description, touched.description)
+                            )
+                        }
                         as="textarea"
                         name="description"
                     />
@@ -164,11 +179,16 @@ function AddEventModal({ toggleIsModalOpened }) {
                     <label>Description</label>
                 </div>
 
-                <div className={`form__field-box form-control form__field-box--end-date ${areDatepickersOpened.endDate || values.endDate ? 'active' : ''}`}>
+                <div className={
+                        classNames(
+                            'form__field-box',
+                            'form-control',
+                            'form__field-box--end-date',
+                            { active: areDatepickersOpened.endDate || values.endDate }
+                        )
+                    }>
                     <DatePicker
-                        className={`form__field datepicker
-                            ${getFieldStatus(errors.endDate, touched.endDate)}
-                        `}
+                        className={classNames('form__field', 'datepicker', getFieldStatus(errors.endDate, touched.endDate))}
                         selected={values.endDate}
                         minDate={values.startDate}
                         onChange={(date) => setCustomFieldValue(date, 'endDate', touched.endDate, setFieldValue, setFieldTouched)}
@@ -183,7 +203,7 @@ function AddEventModal({ toggleIsModalOpened }) {
                 </div>
 
                 <div className="form__submit-box">
-                    <button className={`form__submit ${!isValid || !dirty ? 'disabled' : ''}`} type="submit">
+                    <button className={classNames('form__submit', { disabled: !isValid || !dirty || isSubmitting })} disabled={isSubmitting} type="submit">
                         <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
                              xmlns="http://www.w3.org/2000/svg">
                             <path

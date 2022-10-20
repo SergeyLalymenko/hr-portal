@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import {useDispatch, useSelector } from 'react-redux';
 import { fetchNotifications, setNotification } from '../../store/notificationsSlice';
 import NotificationItem from './NotificationItem/NotificationItem';
+import classNames from 'classnames';
 import './Notifications.scss';
 
 function Notifications({ areNotificationsOpened, toggleNotifications }) {
@@ -45,7 +46,7 @@ function Notifications({ areNotificationsOpened, toggleNotifications }) {
         <>
             {
                 notifications && (
-                    <div className={`header__notifications notifications ${areNotificationsOpened ? 'open' : ''}`}>
+                    <div className={classNames('header__notifications', 'notifications', { open: areNotificationsOpened })}>
                         <div className="notifications__header">
                             <h5>
                                 Notification Center
@@ -57,7 +58,7 @@ function Notifications({ areNotificationsOpened, toggleNotifications }) {
                             </div>
                         </div>
 
-                        <div className={`notifications__unread ${isUnreadNotification() ? 'active' : ''}`}>
+                        <div className={classNames('notifications__unread', { active: isUnreadNotification() })}>
                             <div className="notifications__unread-amount">
                                 <p>
                                     <span>{getUnreadNotificationsAmount()}</span> new
@@ -71,7 +72,11 @@ function Notifications({ areNotificationsOpened, toggleNotifications }) {
 
                         <div className="notifications__rows">
                             {
-                                notifications && notifications.map((item) => <NotificationItem key={item.id} item={item} markAsRead={markAsRead} />)
+                                notifications && notifications.map((item) => <NotificationItem
+                                    key={item.id}
+                                    item={item}
+                                    markAsRead={markAsRead}
+                                />)
                             }
                         </div>
                     </div>
