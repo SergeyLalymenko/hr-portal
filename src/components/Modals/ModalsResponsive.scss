@@ -30,5 +30,11 @@
             box-shadow: none;
             border-radius: 0;
         }
+
+        &__close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
     }
 }

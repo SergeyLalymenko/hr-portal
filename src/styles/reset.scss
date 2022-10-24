@@ -32,6 +32,9 @@ footer, header, hgroup, menu, nav, section {
 input, button {
     outline: none;
 }
+button {
+    padding: 0;
+}
 ol, ul {
     list-style: none;
 }

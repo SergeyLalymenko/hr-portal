@@ -8,7 +8,7 @@ import classNames from 'classnames';
 import '../../../styles/reactDatepicker/reactDatepicker.scss';
 import './AddEventModal.scss';
 
-function AddEventModal({ toggleIsModalOpened }) {
+function AddEventModal({ toggleIsModalOpened, toggleIsModalSuccess }) {
     const dispatch = useDispatch();
     const [areDatepickersOpened, setAreDatepickersOpened] = useState({
         startDate: false,
@@ -40,7 +40,7 @@ function AddEventModal({ toggleIsModalOpened }) {
         },
     ];
 
-    function checkTargetEl(e) {
+    function closeModal(e) {
         e.target.classList.contains('modal') && toggleIsModalOpened();
     }
 
@@ -112,7 +112,7 @@ function AddEventModal({ toggleIsModalOpened }) {
         }
 
         dispatch(createEvent(newEvent))
-            .then(() => toggleIsModalOpened())
+            .then(() => toggleIsModalSuccess())
             .finally(() => setSubmitting(false));
     }
 
@@ -221,13 +221,13 @@ function AddEventModal({ toggleIsModalOpened }) {
     }
 
     return (
-        <div className="modal" onClick={checkTargetEl}>
+        <div className="modal" onClick={closeModal}>
             <div className="modal__content">
                 <div className="add-event-modal">
                     <div className="add-event-modal__head">
                         <h4>Add New Event</h4>
 
-                        <div className="add-event-modal__close" onClick={toggleIsModalOpened}>
+                        <div className="modal__close" onClick={toggleIsModalOpened}>
                             <div></div>
                             <div></div>
                         </div>

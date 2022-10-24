@@ -13,31 +13,6 @@
         }
     }
 
-    &__close {
-        width: 30px;
-        height: 30px;
-        position: relative;
-        cursor: pointer;
-
-        div {
-            position: absolute;
-            top: 14px;
-            left: 0;
-            width: 30px;
-            height: 2px;
-            background: $colorBlack;
-            border-radius: 1px;
-
-            &:nth-child(1) {
-                transform: rotate(45deg);
-            }
-
-            &:nth-child(2) {
-                transform: rotate(-45deg);
-            }
-        }
-    }
-
     .form {
         display: flex;
         align-items: flex-start;

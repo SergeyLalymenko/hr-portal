@@ -4,6 +4,7 @@ import { fetchEvents } from '../../../store/eventsSlice';
 import { useSortable } from '@dnd-kit/sortable';
 import EventsItem from './EventsItem/EventsItem';
 import AddEventModal from '../../../components/Modals/AddEventModal/AddEventModal';
+import SuccessModal from '../../../components/Modals/SuccessModal/SuccessModal';
 import DatePicker from 'react-datepicker';
 import Tippy from '@tippyjs/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -18,6 +19,7 @@ function Events({ id, isCustomizing, getCustomizingClass, onDeleteComponent }) {
     const events = useSelector(state => state.events.data);
     const [filteredEvents, setFilteredEvents] = useState([]);
     const [isModalOpened, setIsModalOpened] = useState(false);
+    const [isModalSuccess, setIsModalSuccess] = useState(false);
     const [startDate, setStartDate] = useState(new Date());
     const [endDate, setEndDate] = useState(new Date());
     const {
@@ -60,11 +62,33 @@ function Events({ id, isCustomizing, getCustomizingClass, onDeleteComponent }) {
         setIsModalOpened(!isModalOpened);
     }
 
+    function toggleIsModalSuccess() {
+        setIsModalSuccess(!isModalSuccess);
+    }
+
+    function closeSuccessModal() {
+        setIsModalOpened(false);
+        setIsModalSuccess(false);
+    }
+
     function onDatepickerChange(dates) {
         const [start, end] = dates;
 
         setStartDate(start);
         setEndDate(end);
+    }
+
+    function renderModal() {
+        return isModalSuccess ? (
+            <SuccessModal
+                title="New event successfully added!"
+                closeSuccessModal={closeSuccessModal} />
+        ) : (
+            <AddEventModal
+                toggleIsModalOpened={toggleIsModalOpened}
+                toggleIsModalSuccess={toggleIsModalSuccess}
+            />
+        );
     }
 
     return (
@@ -159,7 +183,7 @@ function Events({ id, isCustomizing, getCustomizingClass, onDeleteComponent }) {
                 }
 
                 {
-                    isModalOpened && <AddEventModal toggleIsModalOpened={toggleIsModalOpened} />
+                    isModalOpened && renderModal()
                 }
             </div>
         </Tippy>
