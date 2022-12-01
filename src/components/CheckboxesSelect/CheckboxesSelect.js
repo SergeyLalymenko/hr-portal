@@ -1,4 +1,5 @@
 import './CheckboxesSelect.scss';
+import Checkbox from "../Checkbox/Checkbox";
 
 function CheckboxesSelect() {
     return (
@@ -6,21 +7,9 @@ function CheckboxesSelect() {
             <h6>Company</h6>
 
             <div className="checkboxes-select__dropdown-list">
-                <label className="checkboxes-select__checkbox">
-                    <input type="checkbox" />
+                <Checkbox boxClassName="checkboxes-select__checkbox" />
 
-                    <span></span>
-
-                    <p>Phonexa</p>
-                </label>
-
-                <label className="checkboxes-select__checkbox">
-                    <input type="checkbox" />
-
-                    <span></span>
-
-                    <p>Phonexa</p>
-                </label>
+                <Checkbox boxClassName="checkboxes-select__checkbox" />
             </div>
         </div>
     );
