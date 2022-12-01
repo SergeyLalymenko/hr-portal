@@ -121,9 +121,9 @@ function Events({ id, isCustomizing, getCustomizingClass, onDeleteComponent }) {
                                 )
                             }
 
-                            <div className="events__datepicker-box form-control">
+                            <div className="events__datepicker-box form-control active">
                                 <DatePicker
-                                    className="events__datepicker datepicker"
+                                    className="datepicker"
                                     selected={startDate}
                                     onChange={onDatepickerChange}
                                     startDate={startDate}
@@ -132,6 +132,8 @@ function Events({ id, isCustomizing, getCustomizingClass, onDeleteComponent }) {
                                     withPortal
                                     dateFormat="MMM dd, yyyy"
                                 />
+
+                                <label>Range</label>
                             </div>
                         </div>
                     ) : (

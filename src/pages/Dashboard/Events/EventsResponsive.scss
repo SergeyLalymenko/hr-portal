@@ -17,9 +17,8 @@
             margin-left: 5px;
         }
 
-        &__datepicker {
+        &__datepicker-box {
             max-width: 260px;
-            width: 100%;
             margin-left: 5px;
         }
 
@@ -108,9 +107,6 @@
 
         &__datepicker-box {
             order: 1;
-        }
-
-        &__datepicker {
             margin-top: 10px;
             margin-left: 0;
         }
