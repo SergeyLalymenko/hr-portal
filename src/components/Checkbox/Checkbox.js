@@ -1,23 +1,23 @@
 import classNames from 'classnames';
 import './Checkbox.scss';
 
-function Checkbox({ boxClassName, name, title, checked, onCheckboxChange }) {
-    function getBoxClassName() {
-        return boxClassName ? boxClassName : '';
+function Checkbox({ checkboxClassName, checkboxName, checkboxTitle, checkboxChecked, onCheckboxChange }) {
+    function getCheckboxClassName() {
+        return checkboxClassName ? checkboxClassName : '';
     }
 
     return (
-        <label className={classNames('checkbox', getBoxClassName())}>
+        <label className={classNames('checkbox', getCheckboxClassName())}>
             <input
                 type="checkbox"
-                name={name}
-                checked={checked}
+                name={checkboxName}
+                checked={checkboxChecked}
                 onChange={onCheckboxChange}
             />
 
             <span></span>
 
-            <p>{title}</p>
+            <p>{checkboxTitle}</p>
         </label>
     );
 }

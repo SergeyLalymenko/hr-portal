@@ -1,47 +1,37 @@
-// import { useState } from 'react';
 import Checkbox from '@components/Checkbox/Checkbox';
 import './CheckboxesSelect.scss';
 
-function CheckboxesSelect() {
-    // const [checkboxesData, setCheckboxesData] = useState([
-    //     {
-    //         boxClassName: "checkboxes-select__checkbox",
-    //         name: "phonexa",
-    //         title: "Phonexa",
-    //         checked: true,
-    //     },
-    //     {
-    //         boxClassName: "checkboxes-select__checkbox",
-    //         name: "phonexa2",
-    //         title: "Phonexa2",
-    //         checked: false,
-    //     },
-    // ]);
-
+function CheckboxesSelect({ id, checkboxesSelectTitle, checkboxes, onCheckboxesSelectChange }) {
     function onCheckboxChange(e) {
         const { name, checked } = e.target;
 
-        const newCheckboxesData = checkboxesData.map((checkbox) => checkbox.name !== name ? checkbox : {
+        const newCheckboxes = checkboxes.map((checkbox) => checkbox.checkboxName !== name ? checkbox : {
             ...checkbox,
-            checked: checked
+            checkboxChecked: checked,
         });
 
-        setCheckboxesData(newCheckboxesData);
+        const newCheckboxesSelect = {
+            id,
+            checkboxesSelectTitle,
+            checkboxes: newCheckboxes,
+        };
+
+        onCheckboxesSelectChange(newCheckboxesSelect);
     }
 
     return (
         <div className="checkboxes-select">
-            <h6>Company</h6>
+            <h6>{checkboxesSelectTitle}</h6>
 
             <div className="checkboxes-select__dropdown-list">
                 {
-                    checkboxesData.map((checkbox, i) => (
+                    checkboxes.map((checkbox, i) => (
                         <Checkbox
                             key={i}
-                            boxClassName={checkbox.boxClassName}
-                            name={checkbox.name}
-                            title={checkbox.title}
-                            checked={checkbox.checked}
+                            checkboxClassName={checkbox.checkboxClassName}
+                            checkboxName={checkbox.checkboxName}
+                            checkboxTitle={checkbox.checkboxTitle}
+                            checkboxChecked={checkbox.checkboxChecked}
                             onCheckboxChange={onCheckboxChange}
                         />
                     ))

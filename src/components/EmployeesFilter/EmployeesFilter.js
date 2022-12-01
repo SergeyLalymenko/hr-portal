@@ -5,6 +5,7 @@ import './EmployeesFilter.scss';
 function EmployeesFilter() {
     const [checkboxesSelects, setCheckboxesSelects] = useState([
         {
+            id: 1,
             checkboxesSelectTitle: 'Company',
             checkboxes: [
                 {
@@ -22,6 +23,7 @@ function EmployeesFilter() {
             ],
         },
         {
+            id: 2,
             checkboxesSelectTitle: 'Company2',
             checkboxes: [
                 {
@@ -40,12 +42,31 @@ function EmployeesFilter() {
         },
     ]);
 
+    function onCheckboxesSelectChange(newCheckboxesSelect) {
+        const newCheckboxesSelects = checkboxesSelects.map((checkboxesSelect) => (
+            checkboxesSelect.id !== newCheckboxesSelect.id ? (
+                checkboxesSelect
+            ) : (
+                newCheckboxesSelect
+            )
+        ));
+
+        setCheckboxesSelects(newCheckboxesSelects);
+    }
+
     return (
         <div className="employees-filter">
-            {/*<CheckboxesSelect*/}
-            {/*    checkboxesData={checkboxesData}*/}
-            {/*    setCheckboxesData={setCheckboxesData}*/}
-            {/*/>*/}
+            {
+                checkboxesSelects.map(({ checkboxesSelectTitle, checkboxes, id }) => (
+                    <CheckboxesSelect
+                        key={id}
+                        id={id}
+                        checkboxesSelectTitle={checkboxesSelectTitle}
+                        checkboxes={checkboxes}
+                        onCheckboxesSelectChange={onCheckboxesSelectChange}
+                    />
+                ))
+            }
         </div>
     );
 }
