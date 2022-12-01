@@ -12,11 +12,12 @@ import { arrayMove, SortableContext, sortableKeyboardCoordinates } from '@dnd-ki
 import {
     fetchDashboardComponents,
     updateDashboardComponentsLocal,
-    deleteDashboardComponent
-} from '../../store/dashboardComponentsSlice';
+    deleteDashboardComponent,
+} from '@store/dashboardComponentsSlice';
 import Tippy from '@tippyjs/react';
 import ToDoList from './ToDoList/ToDoList';
 import Events from './Events/Events';
+import Employees from './Employees/Employees';
 import './Dashboard.scss';
 
 function Dashboard({ renderUserName }) {
@@ -42,7 +43,6 @@ function Dashboard({ renderUserName }) {
     }, [dispatch]);
 
     function onDeleteComponent(id) {
-        console.log(id);
         dispatch(deleteDashboardComponent(id));
     }
 
@@ -124,6 +124,8 @@ function Dashboard({ renderUserName }) {
                     )
                 }
             </div>
+
+            <Employees />
         </div>
     );
 }

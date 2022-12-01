@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Formik, Form, Field } from 'formik';
-import { createEvent } from '../../../store/eventsSlice';
-import Select from '../../Select/Select';
+import { createEvent } from '@store/eventsSlice';
+import Select from '@components/Select/Select';
 import DatePicker from 'react-datepicker';
 import classNames from 'classnames';
-import '../../../styles/reactDatepicker/reactDatepicker.scss';
+import '@styles/reactDatepicker/reactDatepicker.scss';
 import './AddEventModal.scss';
 
 function AddEventModal({ toggleIsModalOpened, toggleIsModalSuccess }) {
@@ -26,7 +26,6 @@ function AddEventModal({ toggleIsModalOpened, toggleIsModalSuccess }) {
             disabled: false,
         },
     ];
-
     const sharedWithOptions = [
         {
             id: 1,
@@ -120,7 +119,7 @@ function AddEventModal({ toggleIsModalOpened, toggleIsModalSuccess }) {
         return ({ errors, touched, values, setFieldValue, setFieldTouched, isValid, dirty, isSubmitting }) => (
             <Form className="add-event-modal__form form" autoComplete="off" noValidate>
                 <Select
-                    boxClassName="form__select-box"
+                    boxClassName="form__field-box"
                     selectClassName={classNames(getFieldStatus(errors.eventType, touched.eventType))}
                     options={eventTypeOptions}
                     currentValue={values.eventType}
@@ -130,7 +129,7 @@ function AddEventModal({ toggleIsModalOpened, toggleIsModalSuccess }) {
                 />
 
                 <Select
-                    boxClassName="form__select-box"
+                    boxClassName="form__field-box"
                     selectClassName={classNames(getFieldStatus(errors.sharedWith, touched.sharedWith))}
                     options={sharedWithOptions}
                     currentValue={values.sharedWith}

@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import classNames from 'classnames';
-import Notifications from '../Notifications/Notifications';
-import logo from '../../assets/img/header/logo.svg';
+import Notifications from '@components/Notifications/Notifications';
+import logo from '@assets/img/header/logo.svg';
 import './Header.scss';
 
 function Header({

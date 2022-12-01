@@ -1,4 +1,4 @@
-@import './src/styles/variables/index';
+@import '@styles/variables/index';
 @import '../Modals';
 
 .add-event-modal {
@@ -21,74 +21,13 @@
         padding: 40px 90px 70px;
 
         &__field-box {
-            display: flex;
-            width: calc(50% - 10px);
-            margin-top: 12px;
-            position: relative;
-
-            label {
-                font-size: 1rem;
-                line-height: 1;
-                font-weight: 400;
-                color: $colorAcGray;
-                position: absolute;
-                top: 11px;
-                left: 12px;
-                pointer-events: none;
-                transition: .2s;
-            }
-
-            textarea:focus + label {
-                font-size: 0.625rem;
-                top: 3px!important;
-            }
-        }
-
-        &__select-box {
             width: calc(50% - 10px);
             margin-top: 12px;
         }
-
-        &__field-box.active {
-            label {
-                font-size: 0.625rem;
-                top: 3px!important;
-            }
-        }
-
-        &__field {
-            width: 100%;
-            height: 38px;
-            background-color: $colorWhite;
-            border: 1px solid $colorAcGray;
-            border-radius: 4px;
-            outline: none;
-            font-size: 1rem;
-            line-height: 1.375;
-            font-weight: 400;
-            color: $colorDarkBlue;
-            padding: 12px 12px 0;
-
-            &::placeholder {
-                opacity: 0;
-            }
-        }
-
-        //.success {
-        //    border-color: $colorGreen;
-        //    background: url('../../../assets/img/general/field-success.svg')no-repeat calc(100% - 8px) 50%;
-        //}
-        //
-        //.error {
-        //    border-color: $colorRed;
-        //    background: url('../../../assets/img/general/field-error.svg')no-repeat calc(100% - 8px) 50%;
-        //}
 
         &__field--textarea {
-            background-position-y: 8px;
             height: 90px;
             resize: none;
-            padding-right: 30px;
 
             &::-webkit-scrollbar {
                 width: 0;
@@ -115,11 +54,6 @@
             h5 {
                 margin-left: 10px;
             }
-        }
-
-        &__submit.disabled {
-            background: $colorLightGray;
-            color: $colorAcGray;
         }
     }
 }

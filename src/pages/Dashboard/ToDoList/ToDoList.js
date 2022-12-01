@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchTodos } from '../../../store/todosSlice';
+import { fetchTodos } from '@store/todosSlice';
 import { useSortable } from '@dnd-kit/sortable';
 import ToDoItem from './ToDoItem/ToDoItem';
 import Tippy from '@tippyjs/react';

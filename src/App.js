@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import { fetchUser } from './store/userSlice';
+import { fetchUser } from '@store/userSlice';
 import { useDispatch, useSelector } from 'react-redux';
-import Header from './components/Header/Header';
-import Sidebar from './components/Sidebar/Sidebar';
-import Dashboard from './pages/Dashboard/Dashboard';
-import Company from './pages/Company/Company';
-import Settings from './pages/Settings/Settings';
+import Header from '@components/Header/Header';
+import Sidebar from '@components/Sidebar/Sidebar';
+import Dashboard from '@pages/Dashboard/Dashboard';
+import Company from '@pages/Company/Company';
+import Settings from '@pages/Settings/Settings';
 import './App.scss';
 
 function App() {

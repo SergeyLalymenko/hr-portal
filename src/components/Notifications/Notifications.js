@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import {useDispatch, useSelector } from 'react-redux';
-import { fetchNotifications, setNotification } from '../../store/notificationsSlice';
+import { fetchNotifications, setNotification } from '@store/notificationsSlice';
 import NotificationItem from './NotificationItem/NotificationItem';
 import classNames from 'classnames';
 import './Notifications.scss';

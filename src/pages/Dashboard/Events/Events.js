@@ -1,17 +1,17 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchEvents } from '../../../store/eventsSlice';
+import { fetchEvents } from '@store/eventsSlice';
 import { useSortable } from '@dnd-kit/sortable';
 import EventsItem from './EventsItem/EventsItem';
-import AddEventModal from '../../../components/Modals/AddEventModal/AddEventModal';
-import SuccessModal from '../../../components/Modals/SuccessModal/SuccessModal';
+import AddEventModal from '@components/Modals/AddEventModal/AddEventModal';
+import SuccessModal from '@components/Modals/SuccessModal/SuccessModal';
 import DatePicker from 'react-datepicker';
 import Tippy from '@tippyjs/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarDays } from '@fortawesome/free-solid-svg-icons';
 import { CSS } from '@dnd-kit/utilities';
 import classNames from 'classnames';
-import '../../../styles/reactDatepicker/reactDatepicker.scss';
+import '@styles/reactDatepicker/reactDatepicker.scss';
 import './Events.scss';
 
 function Events({ id, isCustomizing, getCustomizingClass, onDeleteComponent }) {
