@@ -3,7 +3,7 @@ import './Checkbox.scss';
 
 function Checkbox({ checkboxClassName, checkboxName, checkboxTitle, checkboxChecked, onCheckboxChange }) {
     function getCheckboxClassName() {
-        return checkboxClassName ? checkboxClassName : '';
+        return checkboxClassName || '';
     }
 
     return (

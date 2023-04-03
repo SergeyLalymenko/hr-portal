@@ -1,3 +1,19 @@
 .employees-filter {
+    display: flex;
+    align-items: center;
     width: 100%;
+
+    &__checkboxes-wrapper {
+        display: flex;
+        width: 100%;
+        margin-left: 14px;
+
+        .checkboxes-select {
+            margin-left: 10px;
+
+            &:first-child {
+                margin-left: 0;
+            }
+        }
+    }
 }
