@@ -1,3 +1,5 @@
+@import '@styles/variables/index';
+
 .employees-filter {
     display: flex;
     align-items: center;
@@ -14,6 +16,75 @@
             &:first-child {
                 margin-left: 0;
             }
+        }
+    }
+
+    &__filter {
+        margin-left: 10px;
+
+        >svg {
+            font-size: 1rem;
+        }
+    }
+
+    &__buttons {
+        display: flex;
+        align-items: center;
+
+        >* {
+            margin-left: 10px;
+
+            svg {
+                font-size: 1rem;
+            }
+        }
+    }
+
+    &__search {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 38px;
+        border-radius: 4px;
+        border: 0px solid rgba($colorBlack, 0);
+        transition: .2s ease;
+
+        &.active {
+            border-color: $colorAcGray;
+            border-width: 1px;
+
+            >input {
+                width: 200px;
+                padding: 0 10px;
+            }
+
+            >button {
+                background: none;
+
+                >svg {
+                    color: $colorAcGray;
+                }
+            }
+        }
+
+        >input {
+            width: 0;
+            color: $colorGray;
+            font-size: 1rem;
+            height: 100%;
+            border: none;
+            padding: 0;
+            border-radius: 4px;
+            transition: .2s ease;
+
+            &::placeholder {
+                color: $colorAcGray;
+            }
+        }
+
+        >button {
+            transition: .2s ease;
+            margin: 0;
         }
     }
 }
