@@ -1,0 +1,48 @@
+@media($media-xl) {
+    .employees-filter {
+        flex-direction: column;
+        align-items: flex-start;
+
+        &__buttons {
+            margin-top: 10px;
+
+            >* {
+                &:first-child {
+                    margin-left: 0;
+                }
+            }
+        }
+
+        &__search {
+            order: 1;
+        }
+    }
+}
+
+@media($media-lg) {
+    .employees-filter {
+        &__checkboxes-wrapper {
+            flex-direction: column;
+            align-items: flex-start;
+
+            .checkboxes-select {
+                margin-left: 0;
+                margin-top: 10px;
+            }
+        }
+    }
+}
+
+@media($media-sm) {
+    .employees-filter {
+        &__search {
+            justify-content: flex-start;
+
+            &.active {
+                >input {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}

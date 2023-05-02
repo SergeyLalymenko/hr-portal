@@ -1,7 +1,26 @@
+import { useCallback, useEffect, useRef, useState } from 'react';
+import classNames from 'classnames';
 import Checkbox from '@components/Checkbox/Checkbox';
 import './CheckboxesSelect.scss';
 
 function CheckboxesSelect({ id, checkboxesSelectTitle, checkboxes, onCheckboxesSelectChange }) {
+    const [isOpen, setIsOpen] = useState(false);
+    const checkboxesSelectRef = useRef();
+
+    const onDocumentClick = useCallback((e) => {
+        if(e.target.closest('.checkboxesSelect') === checkboxesSelectRef.current) return;
+        console.log('тут какая-то проблема, когда падает сюда код то другие селекты срабатывают по 2 раза, не понимаю почему');
+        setIsOpen(false);
+    }, [setIsOpen, checkboxesSelectRef]);
+
+    useEffect(() => {
+        document.addEventListener('click', onDocumentClick);
+
+        return () => {
+            document.addEventListener('click', onDocumentClick);
+        }
+    }, [onDocumentClick]);
+
     function onCheckboxChange(e) {
         const { name, checked } = e.target;
 
@@ -20,8 +39,13 @@ function CheckboxesSelect({ id, checkboxesSelectTitle, checkboxes, onCheckboxesS
     }
 
     return (
-        <div className="checkboxes-select">
-            <h6>{checkboxesSelectTitle}</h6>
+        <div
+            className={classNames('checkboxes-select', 'checkboxesSelect', { open: isOpen })}
+            ref={checkboxesSelectRef}
+        >
+            <h6 onClick={() => setIsOpen(!isOpen)}>
+                {checkboxesSelectTitle}
+            </h6>
 
             <div className="checkboxes-select__dropdown-list">
                 {

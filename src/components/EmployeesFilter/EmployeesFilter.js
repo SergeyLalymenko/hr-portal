@@ -132,11 +132,11 @@ function EmployeesFilter() {
 
     return (
         <div className="employees-filter">
-            <h6>
-                Filter:
-            </h6>
-
             <div className="employees-filter__checkboxes-wrapper">
+                <h6>
+                    Filter:
+                </h6>
+
                 {
                     checkboxesSelects.map(({ checkboxesSelectTitle, checkboxes, id }) => (
                         <CheckboxesSelect
@@ -148,13 +148,13 @@ function EmployeesFilter() {
                         />
                     ))
                 }
-
-                <button type="button" className="employees-filter__filter btn btn-tertiary">
-                    <FontAwesomeIcon icon={ faFilter } />
-                </button>
             </div>
 
             <div className="employees-filter__buttons">
+                <button type="button" className="btn btn-tertiary">
+                    <FontAwesomeIcon icon={ faFilter } />
+                </button>
+
                 <div className={classNames('employees-filter__search', { active: isActiveSearch })}>
                     <input placeholder="Search" />
 
