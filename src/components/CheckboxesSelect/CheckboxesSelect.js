@@ -9,7 +9,7 @@ function CheckboxesSelect({ id, checkboxesSelectTitle, checkboxes, onCheckboxesS
 
     const onDocumentClick = useCallback((e) => {
         if(e.target.closest('.checkboxesSelect') === checkboxesSelectRef.current) return;
-        console.log('тут какая-то проблема, когда падает сюда код то другие селекты срабатывают по 2 раза, не понимаю почему');
+
         setIsOpen(false);
     }, [setIsOpen, checkboxesSelectRef]);
 

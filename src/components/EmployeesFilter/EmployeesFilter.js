@@ -1,14 +1,18 @@
 import { useState } from 'react';
 import CheckboxesSelect from '@components/CheckboxesSelect/CheckboxesSelect';
+import Modal from '@components/Modal/Modal';
 import { faFilter, faUserPlus, faFile, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classNames from 'classnames';
 import './EmployeesFilter.scss';
 
 function EmployeesFilter() {
+    const [isOpenModal, setIsOpenModal] = useState(false);
     const [checkboxesSelects, setCheckboxesSelects] = useState([
         {
             id: 1,
+            isRenderForPage: true,
+            isRenderForModal: true,
             checkboxesSelectTitle: 'Company',
             checkboxes: [
                 {
@@ -27,6 +31,8 @@ function EmployeesFilter() {
         },
         {
             id: 2,
+            isRenderForPage: true,
+            isRenderForModal: true,
             checkboxesSelectTitle: 'Role',
             checkboxes: [
                 {
@@ -45,6 +51,8 @@ function EmployeesFilter() {
         },
         {
             id: 3,
+            isRenderForPage: true,
+            isRenderForModal: true,
             checkboxesSelectTitle: 'Department',
             checkboxes: [
                 {
@@ -63,6 +71,8 @@ function EmployeesFilter() {
         },
         {
             id: 4,
+            isRenderForPage: true,
+            isRenderForModal: true,
             checkboxesSelectTitle: 'Location',
             checkboxes: [
                 {
@@ -81,6 +91,8 @@ function EmployeesFilter() {
         },
         {
             id: 5,
+            isRenderForPage: true,
+            isRenderForModal: true,
             checkboxesSelectTitle: 'Manager',
             checkboxes: [
                 {
@@ -99,6 +111,8 @@ function EmployeesFilter() {
         },
         {
             id: 6,
+            isRenderForPage: true,
+            isRenderForModal: true,
             checkboxesSelectTitle: 'Status',
             checkboxes: [
                 {
@@ -130,48 +144,60 @@ function EmployeesFilter() {
         setCheckboxesSelects(newCheckboxesSelects);
     }
 
+    console.log('isRenderForModal');
+
     return (
-        <div className="employees-filter">
-            <div className="employees-filter__checkboxes-wrapper">
-                <h6>
-                    Filter:
-                </h6>
+        <>
+            <div className="employees-filter">
+                <div className="employees-filter__checkboxes-wrapper">
+                    <h6>
+                        Filter:
+                    </h6>
 
-                {
-                    checkboxesSelects.map(({ checkboxesSelectTitle, checkboxes, id }) => (
-                        <CheckboxesSelect
-                            key={id}
-                            id={id}
-                            checkboxesSelectTitle={checkboxesSelectTitle}
-                            checkboxes={checkboxes}
-                            onCheckboxesSelectChange={onCheckboxesSelectChange}
-                        />
-                    ))
-                }
-            </div>
-
-            <div className="employees-filter__buttons">
-                <button type="button" className="btn btn-tertiary">
-                    <FontAwesomeIcon icon={ faFilter } />
-                </button>
-
-                <div className={classNames('employees-filter__search', { active: isActiveSearch })}>
-                    <input placeholder="Search" />
-
-                    <button type="button" className="btn btn-tertiary" onClick={() => setIsActiveSearch(!isActiveSearch)}>
-                        <FontAwesomeIcon icon={ faMagnifyingGlass } />
-                    </button>
+                    {
+                        checkboxesSelects.map(({ isRenderForPage, checkboxesSelectTitle, checkboxes, id }) => (
+                            isRenderForPage && <CheckboxesSelect
+                                key={id}
+                                id={id}
+                                checkboxesSelectTitle={checkboxesSelectTitle}
+                                checkboxes={checkboxes}
+                                onCheckboxesSelectChange={onCheckboxesSelectChange}
+                            />
+                        ))
+                    }
                 </div>
 
-                <button type="button" className="btn btn-tertiary">
-                    <FontAwesomeIcon icon={ faUserPlus } />
-                </button>
+                <div className="employees-filter__buttons">
+                    <button type="button" className="btn btn-tertiary" onClick={() => setIsOpenModal(true)}>
+                        <FontAwesomeIcon icon={faFilter} />
+                    </button>
 
-                <button type="button" className="btn btn-tertiary">
-                    <FontAwesomeIcon icon={ faFile } />
-                </button>
+                    <div className={classNames('employees-filter__search', { active: isActiveSearch })}>
+                        <input placeholder="Search" />
+
+                        <button type="button" className="btn btn-tertiary" onClick={() => setIsActiveSearch(!isActiveSearch)}>
+                            <FontAwesomeIcon icon={faMagnifyingGlass} />
+                        </button>
+                    </div>
+
+                    <button type="button" className="btn btn-tertiary">
+                        <FontAwesomeIcon icon={faUserPlus} />
+                    </button>
+
+                    <button type="button" className="btn btn-tertiary">
+                        <FontAwesomeIcon icon={faFile} />
+                    </button>
+                </div>
             </div>
-        </div>
+
+            <Modal
+                open={isOpenModal}
+                setOpen={setIsOpenModal}
+                modalHeadTitle="Add New Event"
+            >
+                Content~~~
+            </Modal>
+        </>
     );
 }
 

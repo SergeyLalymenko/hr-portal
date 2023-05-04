@@ -1,0 +1,31 @@
+@media($media-xl) {
+    .modall {
+        &__content {
+            max-width: 680px;
+        }
+    }
+}
+
+@media($media-lg) {
+    .modall {
+        &__content {
+            max-width: 444px;
+        }
+    }
+}
+
+@media($media-sm) {
+    .modall {
+        top: 68px;
+        height: calc(100% - 68px);
+        background: none;
+
+        &__content {
+            border-top: 1px solid rgba($colorLightBlue, .3);
+            min-height: 100%;
+            max-width: none;
+            box-shadow: none;
+            border-radius: 0;
+        }
+    }
+}
