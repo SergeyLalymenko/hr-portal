@@ -30,6 +30,12 @@
                 margin-top: 10px;
             }
         }
+
+        .modal-body {
+            &__field-box {
+                width: 100%;
+            }
+        }
     }
 }
 

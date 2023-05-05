@@ -11,8 +11,10 @@ function EmployeesFilter() {
     const [checkboxesSelects, setCheckboxesSelects] = useState([
         {
             id: 1,
-            isRenderForPage: true,
-            isRenderForModal: true,
+            additionalProps: {
+                isRenderForPage: true,
+                isRenderForModal: true,
+            },
             checkboxesSelectTitle: 'Company',
             checkboxes: [
                 {
@@ -31,8 +33,10 @@ function EmployeesFilter() {
         },
         {
             id: 2,
-            isRenderForPage: true,
-            isRenderForModal: true,
+            additionalProps: {
+                isRenderForPage: false,
+                isRenderForModal: true,
+            },
             checkboxesSelectTitle: 'Role',
             checkboxes: [
                 {
@@ -51,28 +55,10 @@ function EmployeesFilter() {
         },
         {
             id: 3,
-            isRenderForPage: true,
-            isRenderForModal: true,
-            checkboxesSelectTitle: 'Department',
-            checkboxes: [
-                {
-                    checkboxClassName: "checkboxes-select__checkbox",
-                    checkboxName: "1",
-                    checkboxTitle: "Option 1",
-                    checkboxChecked: true,
-                },
-                {
-                    checkboxClassName: "checkboxes-select__checkbox",
-                    checkboxName: "2",
-                    checkboxTitle: "Option 2",
-                    checkboxChecked: false,
-                },
-            ],
-        },
-        {
-            id: 4,
-            isRenderForPage: true,
-            isRenderForModal: true,
+            additionalProps: {
+                isRenderForPage: true,
+                isRenderForModal: true,
+            },
             checkboxesSelectTitle: 'Location',
             checkboxes: [
                 {
@@ -90,10 +76,34 @@ function EmployeesFilter() {
             ],
         },
         {
+            id: 4,
+            additionalProps: {
+                isRenderForPage: false,
+                isRenderForModal: true,
+            },
+            checkboxesSelectTitle: 'Status',
+            checkboxes: [
+                {
+                    checkboxClassName: "checkboxes-select__checkbox",
+                    checkboxName: "1",
+                    checkboxTitle: "Option 1",
+                    checkboxChecked: true,
+                },
+                {
+                    checkboxClassName: "checkboxes-select__checkbox",
+                    checkboxName: "2",
+                    checkboxTitle: "Option 2",
+                    checkboxChecked: false,
+                },
+            ],
+        },
+        {
             id: 5,
-            isRenderForPage: true,
-            isRenderForModal: true,
-            checkboxesSelectTitle: 'Manager',
+            additionalProps: {
+                isRenderForPage: true,
+                isRenderForModal: true,
+            },
+            checkboxesSelectTitle: 'Department',
             checkboxes: [
                 {
                     checkboxClassName: "checkboxes-select__checkbox",
@@ -111,9 +121,55 @@ function EmployeesFilter() {
         },
         {
             id: 6,
-            isRenderForPage: true,
-            isRenderForModal: true,
-            checkboxesSelectTitle: 'Status',
+            additionalProps: {
+                isRenderForPage: false,
+                isRenderForModal: true,
+            },
+            checkboxesSelectTitle: 'Pay Status',
+            checkboxes: [
+                {
+                    checkboxClassName: "checkboxes-select__checkbox",
+                    checkboxName: "1",
+                    checkboxTitle: "Option 1",
+                    checkboxChecked: true,
+                },
+                {
+                    checkboxClassName: "checkboxes-select__checkbox",
+                    checkboxName: "2",
+                    checkboxTitle: "Option 2",
+                    checkboxChecked: false,
+                },
+            ],
+        },
+        {
+            id: 7,
+            additionalProps: {
+                isRenderForPage: true,
+                isRenderForModal: true,
+            },
+            checkboxesSelectTitle: 'Direct Report',
+            checkboxes: [
+                {
+                    checkboxClassName: "checkboxes-select__checkbox",
+                    checkboxName: "1",
+                    checkboxTitle: "Option 1",
+                    checkboxChecked: true,
+                },
+                {
+                    checkboxClassName: "checkboxes-select__checkbox",
+                    checkboxName: "2",
+                    checkboxTitle: "Option 2",
+                    checkboxChecked: false,
+                },
+            ],
+        },
+        {
+            id: 8,
+            additionalProps: {
+                isRenderForPage: false,
+                isRenderForModal: true,
+            },
+            checkboxesSelectTitle: 'Add/Remove Columns',
             checkboxes: [
                 {
                     checkboxClassName: "checkboxes-select__checkbox",
@@ -144,60 +200,87 @@ function EmployeesFilter() {
         setCheckboxesSelects(newCheckboxesSelects);
     }
 
-    console.log('isRenderForModal');
-
     return (
-        <>
-            <div className="employees-filter">
-                <div className="employees-filter__checkboxes-wrapper">
-                    <h6>
-                        Filter:
-                    </h6>
+        <div className="employees-filter">
+            <div className="employees-filter__checkboxes-wrapper">
+                <h6>
+                    Filter:
+                </h6>
 
-                    {
-                        checkboxesSelects.map(({ isRenderForPage, checkboxesSelectTitle, checkboxes, id }) => (
-                            isRenderForPage && <CheckboxesSelect
-                                key={id}
-                                id={id}
-                                checkboxesSelectTitle={checkboxesSelectTitle}
-                                checkboxes={checkboxes}
-                                onCheckboxesSelectChange={onCheckboxesSelectChange}
-                            />
-                        ))
-                    }
-                </div>
+                {
+                    checkboxesSelects.map(({ additionalProps, checkboxesSelectTitle, checkboxes, id }) => (
+                        additionalProps.isRenderForPage && <CheckboxesSelect
+                            key={id}
+                            id={id}
+                            additionalProps={additionalProps}
+                            checkboxesSelectTitle={checkboxesSelectTitle}
+                            checkboxes={checkboxes}
+                            onCheckboxesSelectChange={onCheckboxesSelectChange}
+                        />
+                    ))
+                }
+            </div>
 
-                <div className="employees-filter__buttons">
-                    <button type="button" className="btn btn-tertiary" onClick={() => setIsOpenModal(true)}>
-                        <FontAwesomeIcon icon={faFilter} />
-                    </button>
+            <div className="employees-filter__buttons">
+                <button type="button" className="btn btn-tertiary icon" onClick={() => setIsOpenModal(true)}>
+                    <FontAwesomeIcon icon={faFilter} />
+                </button>
 
-                    <div className={classNames('employees-filter__search', { active: isActiveSearch })}>
-                        <input placeholder="Search" />
+                <div className={classNames('employees-filter__search', { active: isActiveSearch })}>
+                    <input placeholder="Search" />
 
-                        <button type="button" className="btn btn-tertiary" onClick={() => setIsActiveSearch(!isActiveSearch)}>
-                            <FontAwesomeIcon icon={faMagnifyingGlass} />
-                        </button>
-                    </div>
-
-                    <button type="button" className="btn btn-tertiary">
-                        <FontAwesomeIcon icon={faUserPlus} />
-                    </button>
-
-                    <button type="button" className="btn btn-tertiary">
-                        <FontAwesomeIcon icon={faFile} />
+                    <button type="button" className="btn btn-tertiary icon" onClick={() => setIsActiveSearch(!isActiveSearch)}>
+                        <FontAwesomeIcon icon={faMagnifyingGlass} />
                     </button>
                 </div>
+
+                <button type="button" className="btn btn-tertiary icon">
+                    <FontAwesomeIcon icon={faUserPlus} />
+                </button>
+
+                <button type="button" className="btn btn-tertiary icon">
+                    <FontAwesomeIcon icon={faFile} />
+                </button>
             </div>
 
             <Modal
                 open={isOpenModal}
                 setOpen={setIsOpenModal}
-                modalHeadTitle="Add New Event"
+                modalHeadTitle="Advanced Filters"
             >
-                Content~~~
+                <div className="employees-filter__modal-body modal-body">
+                    {
+                        checkboxesSelects.map(({ additionalProps, checkboxesSelectTitle, checkboxes, id }) => (
+                            additionalProps.isRenderForModal && <div key={id} className="form-control modal-body__field-box">
+                                <CheckboxesSelect
+                                    id={id}
+                                    additionalProps={additionalProps}
+                                    checkboxesSelectTitle={checkboxesSelectTitle}
+                                    checkboxes={checkboxes}
+                                    onCheckboxesSelectChange={onCheckboxesSelectChange}
+                                />
+                            </div>
+                        ))
+                    }
+
+                    <div className="modal-body__buttons">
+                        <button
+                            className="btn btn-tertiary outline"
+                            onClick={() => setIsOpenModal(false)}
+                        >
+                            Cancel
+                        </button>
+
+                        <button
+                            className="btn btn-tertiary"
+                            onClick={() => setIsOpenModal(false)}
+                        >
+                            Apply Filters
+                        </button>
+                    </div>
+                </div>
             </Modal>
-        </>
+        </div>
     );
 }
 

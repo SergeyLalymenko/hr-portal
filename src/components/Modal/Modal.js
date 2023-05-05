@@ -3,15 +3,16 @@ import classNames from 'classnames';
 import './Modal.scss';
 
 function Modal({ open, setOpen, children, modalHeadTitle }) {
+    function onModalClick({ target }) {
+        target.classList.contains('modall') && setOpen(false);
+    }
+
     return (
         <div
             className={classNames('modall', { open })}
-            onClick={() => setOpen(false)}
+            onClick={onModalClick}
         >
-            <div
-                className="modall__content"
-                onClick={(e) => e.stopPropagation()}
-            >
+            <div className="modall__content">
                 {modalHeadTitle && <ModalHead setOpen={setOpen} title={modalHeadTitle} />}
 
                 {children}

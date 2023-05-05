@@ -79,6 +79,34 @@
             margin: 0;
         }
     }
+
+    .modal-body {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        padding: 8px 60px 40px;
+
+        &__field-box {
+            margin-top: 12px;
+            width: calc(50% - 10px);
+        }
+
+        &__buttons {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            margin-top: 48px;
+
+            >button {
+                width: 145px;
+                margin-left: 20px;
+
+                &:first-child {
+                    margin-left: 0;
+                }
+            }
+        }
+    }
 }
 
 @import './EmployeesFilterResponsive';

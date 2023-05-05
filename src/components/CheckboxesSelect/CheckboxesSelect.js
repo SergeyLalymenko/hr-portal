@@ -3,7 +3,13 @@ import classNames from 'classnames';
 import Checkbox from '@components/Checkbox/Checkbox';
 import './CheckboxesSelect.scss';
 
-function CheckboxesSelect({ id, checkboxesSelectTitle, checkboxes, onCheckboxesSelectChange }) {
+function CheckboxesSelect({
+    id,
+    additionalProps,
+    checkboxesSelectTitle,
+    checkboxes,
+    onCheckboxesSelectChange
+}) {
     const [isOpen, setIsOpen] = useState(false);
     const checkboxesSelectRef = useRef();
 
@@ -31,6 +37,7 @@ function CheckboxesSelect({ id, checkboxesSelectTitle, checkboxes, onCheckboxesS
 
         const newCheckboxesSelect = {
             id,
+            additionalProps,
             checkboxesSelectTitle,
             checkboxes: newCheckboxes,
         };
