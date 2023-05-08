@@ -1,24 +1,12 @@
 @import '@styles/variables/index';
-@import '../Modals';
 
 .add-event-modal {
-    &__head {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 30px 30px 0;
-
-        h4 {
-            color: $colorDarkBlue;
-        }
-    }
-
     .form {
         display: flex;
         align-items: flex-start;
         justify-content: space-between;
         flex-wrap: wrap;
-        padding: 40px 90px 70px;
+        padding: 8px 60px 40px;
 
         &__field-box {
             width: calc(50% - 10px);

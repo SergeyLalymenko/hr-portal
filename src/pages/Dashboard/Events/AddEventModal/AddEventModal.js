@@ -2,14 +2,16 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Formik, Form, Field } from 'formik';
 import { createEvent } from '@store/eventsSlice';
+import Modal from '@components/Modal/Modal';
 import Select from '@components/Select/Select';
 import DatePicker from 'react-datepicker';
 import classNames from 'classnames';
 import '@styles/reactDatepicker/reactDatepicker.scss';
 import './AddEventModal.scss';
 
-function AddEventModal({ toggleIsModalOpened, toggleIsModalSuccess }) {
+function AddEventModal({ isModalOpened, setIsModalOpened }) {
     const dispatch = useDispatch();
+    const [successModalTitle, setSuccessModalTitle] = useState(null);
     const [areDatepickersOpened, setAreDatepickersOpened] = useState({
         startDate: false,
         endDate: false,
@@ -38,10 +40,6 @@ function AddEventModal({ toggleIsModalOpened, toggleIsModalSuccess }) {
             disabled: false,
         },
     ];
-
-    function closeModal(e) {
-        e.target.classList.contains('modal') && toggleIsModalOpened();
-    }
 
     function onDatepickersOpenedToggle(name, bool) {
         setAreDatepickersOpened({
@@ -111,7 +109,7 @@ function AddEventModal({ toggleIsModalOpened, toggleIsModalSuccess }) {
         }
 
         dispatch(createEvent(newEvent))
-            .then(() => toggleIsModalSuccess())
+            .then(() => console.log('тут должен быть toggleIsModalSuccess'))
             .finally(() => setSubmitting(false));
     }
 
@@ -155,13 +153,13 @@ function AddEventModal({ toggleIsModalOpened, toggleIsModalSuccess }) {
                 </div>
 
                 <div className={
-                        classNames(
-                            'form__field-box',
-                            'form-control',
-                            'form__field-box--textarea',
-                            { active: values.description }
-                        )
-                    }>
+                    classNames(
+                        'form__field-box',
+                        'form-control',
+                        'form__field-box--textarea',
+                        { active: values.description }
+                    )
+                }>
                     <Field
                         className={
                             classNames(
@@ -179,13 +177,13 @@ function AddEventModal({ toggleIsModalOpened, toggleIsModalSuccess }) {
                 </div>
 
                 <div className={
-                        classNames(
-                            'form__field-box',
-                            'form-control',
-                            'form__field-box--end-date',
-                            { active: areDatepickersOpened.endDate || values.endDate }
-                        )
-                    }>
+                    classNames(
+                        'form__field-box',
+                        'form-control',
+                        'form__field-box--end-date',
+                        { active: areDatepickersOpened.endDate || values.endDate }
+                    )
+                }>
                     <DatePicker
                         className={classNames('form__field', 'datepicker', getFieldStatus(errors.endDate, touched.endDate))}
                         selected={values.endDate}
@@ -220,28 +218,22 @@ function AddEventModal({ toggleIsModalOpened, toggleIsModalSuccess }) {
     }
 
     return (
-        <div className="modal" onClick={closeModal}>
-            <div className="modal__content">
-                <div className="add-event-modal">
-                    <div className="add-event-modal__head">
-                        <h4>Add New Event</h4>
-
-                        <div className="modal__close" onClick={toggleIsModalOpened}>
-                            <div></div>
-                            <div></div>
-                        </div>
-                    </div>
-
-                    <Formik
-                        initialValues={getInitialValues()}
-                        validate={validateForm}
-                        onSubmit={onFormSubmit}
-                    >
-                        {renderForm()}
-                    </Formik>
-                </div>
+        <Modal
+            open={isModalOpened}
+            setOpen={setIsModalOpened}
+            modalHeadTitle="Add New Event"
+            successModalTitle={successModalTitle}
+        >
+            <div className="add-event-modal">
+                <Formik
+                    initialValues={getInitialValues()}
+                    validate={validateForm}
+                    onSubmit={onFormSubmit}
+                >
+                    {renderForm()}
+                </Formik>
             </div>
-        </div>
+        </Modal>
     );
 }
 

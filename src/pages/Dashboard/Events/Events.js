@@ -3,8 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchEvents } from '@store/eventsSlice';
 import { useSortable } from '@dnd-kit/sortable';
 import EventsItem from './EventsItem/EventsItem';
-import AddEventModal from '@components/Modals/AddEventModal/AddEventModal';
-import SuccessModal from '@components/Modals/SuccessModal/SuccessModal';
+import AddEventModal from './AddEventModal/AddEventModal';
+// import AddEventModal from '@components/Modals/AddEventModal/AddEventModal';
+// import SuccessModal from '@components/Modals/SuccessModal/SuccessModal';
 import DatePicker from 'react-datepicker';
 import Tippy from '@tippyjs/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -78,18 +79,18 @@ function Events({ id, isCustomizing, getCustomizingClass, onDeleteComponent }) {
         setEndDate(end);
     }
 
-    function renderModal() {
-        return isModalSuccess ? (
-            <SuccessModal
-                title="New event successfully added!"
-                closeSuccessModal={closeSuccessModal} />
-        ) : (
-            <AddEventModal
-                toggleIsModalOpened={toggleIsModalOpened}
-                toggleIsModalSuccess={toggleIsModalSuccess}
-            />
-        );
-    }
+    // function renderModal() {
+    //     return isModalSuccess ? (
+    //         <SuccessModal
+    //             title="New event successfully added!"
+    //             closeSuccessModal={closeSuccessModal} />
+    //     ) : (
+    //         <AddEventModal
+    //             toggleIsModalOpened={toggleIsModalOpened}
+    //             toggleIsModalSuccess={toggleIsModalSuccess}
+    //         />
+    //     );
+    // }
 
     return (
         <Tippy
@@ -185,7 +186,18 @@ function Events({ id, isCustomizing, getCustomizingClass, onDeleteComponent }) {
                 }
 
                 {
-                    isModalOpened && renderModal()
+                    console.log('для новой add event модалки нужно придумать переключение на success')
+                }
+
+                {/*{*/}
+                {/*    isModalOpened && renderModal()*/}
+                {/*}*/}
+
+                {
+                    <AddEventModal
+                        isModalOpened={isModalOpened}
+                        setIsModalOpened={setIsModalOpened}
+                    />
                 }
             </div>
         </Tippy>

@@ -2,9 +2,15 @@ import ModalHead from '@components/Modal/ModalHead/ModalHead';
 import classNames from 'classnames';
 import './Modal.scss';
 
-function Modal({ open, setOpen, children, modalHeadTitle }) {
+function Modal({ open, setOpen, children, modalHeadTitle, successModalTitle }) {
     function onModalClick({ target }) {
         target.classList.contains('modall') && setOpen(false);
+    }
+
+    function renderHead() {
+        if(modalHeadTitle) {
+            return <ModalHead setOpen={setOpen} title={modalHeadTitle} />;
+        }
     }
 
     return (
@@ -13,9 +19,15 @@ function Modal({ open, setOpen, children, modalHeadTitle }) {
             onClick={onModalClick}
         >
             <div className="modall__content">
-                {modalHeadTitle && <ModalHead setOpen={setOpen} title={modalHeadTitle} />}
+                {/*{*/}
+                {/*    successModalTitle ? (*/}
+                {/*        <p>success</p>*/}
+                {/*    ) : (*/}
+                {/*        renderHead()*/}
 
-                {children}
+                {/*        {children}*/}
+                {/*    )*/}
+                {/*}*/}
             </div>
         </div>
     );
