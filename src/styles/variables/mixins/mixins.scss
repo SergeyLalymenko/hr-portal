@@ -38,6 +38,14 @@
     }
 }
 @mixin btn-tertiary {
+    background: $colorLightBlue;
+    color: $colorWhite;
+
+    &:hover {
+        background: $colorBlue;
+    }
+}
+@mixin btn-tertiary-outline {
     background: $colorWhite;
     color: $colorBlue;
     border: 1px solid $colorBlue;

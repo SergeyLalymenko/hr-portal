@@ -6,186 +6,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classNames from 'classnames';
 import './EmployeesFilter.scss';
 
-function EmployeesFilter() {
+function EmployeesFilter({ checkboxesSelects, setCheckboxesSelects }) {
     const [isOpenModal, setIsOpenModal] = useState(false);
-    const [checkboxesSelects, setCheckboxesSelects] = useState([
-        {
-            id: 1,
-            additionalProps: {
-                isRenderForPage: true,
-                isRenderForModal: true,
-            },
-            checkboxesSelectTitle: 'Company',
-            checkboxes: [
-                {
-                    checkboxClassName: "checkboxes-select__checkbox",
-                    checkboxName: "1",
-                    checkboxTitle: "Option 1",
-                    checkboxChecked: true,
-                },
-                {
-                    checkboxClassName: "checkboxes-select__checkbox",
-                    checkboxName: "2",
-                    checkboxTitle: "Option 2",
-                    checkboxChecked: false,
-                },
-            ],
-        },
-        {
-            id: 2,
-            additionalProps: {
-                isRenderForPage: false,
-                isRenderForModal: true,
-            },
-            checkboxesSelectTitle: 'Role',
-            checkboxes: [
-                {
-                    checkboxClassName: "checkboxes-select__checkbox",
-                    checkboxName: "1",
-                    checkboxTitle: "Option 1",
-                    checkboxChecked: true,
-                },
-                {
-                    checkboxClassName: "checkboxes-select__checkbox",
-                    checkboxName: "2",
-                    checkboxTitle: "Option 2",
-                    checkboxChecked: false,
-                },
-            ],
-        },
-        {
-            id: 3,
-            additionalProps: {
-                isRenderForPage: true,
-                isRenderForModal: true,
-            },
-            checkboxesSelectTitle: 'Location',
-            checkboxes: [
-                {
-                    checkboxClassName: "checkboxes-select__checkbox",
-                    checkboxName: "1",
-                    checkboxTitle: "Option 1",
-                    checkboxChecked: true,
-                },
-                {
-                    checkboxClassName: "checkboxes-select__checkbox",
-                    checkboxName: "2",
-                    checkboxTitle: "Option 2",
-                    checkboxChecked: false,
-                },
-            ],
-        },
-        {
-            id: 4,
-            additionalProps: {
-                isRenderForPage: false,
-                isRenderForModal: true,
-            },
-            checkboxesSelectTitle: 'Status',
-            checkboxes: [
-                {
-                    checkboxClassName: "checkboxes-select__checkbox",
-                    checkboxName: "1",
-                    checkboxTitle: "Option 1",
-                    checkboxChecked: true,
-                },
-                {
-                    checkboxClassName: "checkboxes-select__checkbox",
-                    checkboxName: "2",
-                    checkboxTitle: "Option 2",
-                    checkboxChecked: false,
-                },
-            ],
-        },
-        {
-            id: 5,
-            additionalProps: {
-                isRenderForPage: true,
-                isRenderForModal: true,
-            },
-            checkboxesSelectTitle: 'Department',
-            checkboxes: [
-                {
-                    checkboxClassName: "checkboxes-select__checkbox",
-                    checkboxName: "1",
-                    checkboxTitle: "Option 1",
-                    checkboxChecked: true,
-                },
-                {
-                    checkboxClassName: "checkboxes-select__checkbox",
-                    checkboxName: "2",
-                    checkboxTitle: "Option 2",
-                    checkboxChecked: false,
-                },
-            ],
-        },
-        {
-            id: 6,
-            additionalProps: {
-                isRenderForPage: false,
-                isRenderForModal: true,
-            },
-            checkboxesSelectTitle: 'Pay Status',
-            checkboxes: [
-                {
-                    checkboxClassName: "checkboxes-select__checkbox",
-                    checkboxName: "1",
-                    checkboxTitle: "Option 1",
-                    checkboxChecked: true,
-                },
-                {
-                    checkboxClassName: "checkboxes-select__checkbox",
-                    checkboxName: "2",
-                    checkboxTitle: "Option 2",
-                    checkboxChecked: false,
-                },
-            ],
-        },
-        {
-            id: 7,
-            additionalProps: {
-                isRenderForPage: true,
-                isRenderForModal: true,
-            },
-            checkboxesSelectTitle: 'Direct Report',
-            checkboxes: [
-                {
-                    checkboxClassName: "checkboxes-select__checkbox",
-                    checkboxName: "1",
-                    checkboxTitle: "Option 1",
-                    checkboxChecked: true,
-                },
-                {
-                    checkboxClassName: "checkboxes-select__checkbox",
-                    checkboxName: "2",
-                    checkboxTitle: "Option 2",
-                    checkboxChecked: false,
-                },
-            ],
-        },
-        {
-            id: 8,
-            additionalProps: {
-                isRenderForPage: false,
-                isRenderForModal: true,
-            },
-            checkboxesSelectTitle: 'Add/Remove Columns',
-            checkboxes: [
-                {
-                    checkboxClassName: "checkboxes-select__checkbox",
-                    checkboxName: "1",
-                    checkboxTitle: "Option 1",
-                    checkboxChecked: true,
-                },
-                {
-                    checkboxClassName: "checkboxes-select__checkbox",
-                    checkboxName: "2",
-                    checkboxTitle: "Option 2",
-                    checkboxChecked: false,
-                },
-            ],
-        },
-    ]);
     const [isActiveSearch, setIsActiveSearch] = useState(false);
 
     function onCheckboxesSelectChange(newCheckboxesSelect) {
@@ -222,23 +44,23 @@ function EmployeesFilter() {
             </div>
 
             <div className="employees-filter__buttons">
-                <button type="button" className="btn btn-tertiary icon" onClick={() => setIsOpenModal(true)}>
+                <button type="button" className="employees-filter__button" onClick={() => setIsOpenModal(true)}>
                     <FontAwesomeIcon icon={faFilter} />
                 </button>
 
                 <div className={classNames('employees-filter__search', { active: isActiveSearch })}>
                     <input placeholder="Search" />
 
-                    <button type="button" className="btn btn-tertiary icon" onClick={() => setIsActiveSearch(!isActiveSearch)}>
+                    <button type="button" className="employees-filter__button" onClick={() => setIsActiveSearch(!isActiveSearch)}>
                         <FontAwesomeIcon icon={faMagnifyingGlass} />
                     </button>
                 </div>
 
-                <button type="button" className="btn btn-tertiary icon">
+                <button type="button" className="employees-filter__button">
                     <FontAwesomeIcon icon={faUserPlus} />
                 </button>
 
-                <button type="button" className="btn btn-tertiary icon">
+                <button type="button" className="employees-filter__button">
                     <FontAwesomeIcon icon={faFile} />
                 </button>
             </div>
@@ -265,14 +87,14 @@ function EmployeesFilter() {
 
                     <div className="modal-body__buttons">
                         <button
-                            className="btn btn-tertiary outline"
+                            className="modal-body__button modal-body__button--cancel"
                             onClick={() => setIsOpenModal(false)}
                         >
                             Cancel
                         </button>
 
                         <button
-                            className="btn btn-tertiary"
+                            className="modal-body__button modal-body__button--apply"
                             onClick={() => setIsOpenModal(false)}
                         >
                             Apply Filters

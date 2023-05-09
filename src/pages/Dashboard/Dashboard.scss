@@ -15,8 +15,9 @@
         }
 
         button {
-            @include btn-tertiary;
+            @include btn-tertiary-outline;
             @include btn-md;
+
             width: 224px;
             color: $colorBlue;
             border: 1px solid $colorBlue;

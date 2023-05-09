@@ -25,10 +25,19 @@
 
         >* {
             margin-left: 10px;
+        }
+    }
 
-            svg {
-                font-size: 1rem;
-            }
+    &__button {
+        @include btn-tertiary;
+
+        min-width: 38px;
+        width: 38px;
+        height: 38px;
+        border-radius: 4px;
+
+        svg {
+            font-size: 1rem;
         }
     }
 
@@ -96,14 +105,24 @@
             justify-content: center;
             width: 100%;
             margin-top: 48px;
+        }
 
-            >button {
-                width: 145px;
-                margin-left: 20px;
+        &__button {
+            @include btn-md;
 
-                &:first-child {
-                    margin-left: 0;
-                }
+            width: 145px;
+            margin-left: 20px;
+
+            &:first-child {
+                margin-left: 0;
+            }
+
+            &--cancel {
+                @include btn-tertiary-outline;
+            }
+
+            &--apply {
+                @include btn-tertiary;
             }
         }
     }
