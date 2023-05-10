@@ -1,6 +1,7 @@
 
 
-function EmployeesTable() {
+function EmployeesTable({ filters }) {
+    console.log(filters);
     return (
         <div>Table</div>
     );

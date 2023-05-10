@@ -12,6 +12,7 @@ function Employees() {
                 isRenderForModal: true,
             },
             checkboxesSelectTitle: 'Company',
+            filterName: 'company',
             checkboxes: [
                 {
                     checkboxClassName: "checkboxes-select__checkbox",
@@ -34,6 +35,7 @@ function Employees() {
                 isRenderForModal: true,
             },
             checkboxesSelectTitle: 'Role',
+            filterName: 'role',
             checkboxes: [
                 {
                     checkboxClassName: "checkboxes-select__checkbox",
@@ -56,6 +58,7 @@ function Employees() {
                 isRenderForModal: true,
             },
             checkboxesSelectTitle: 'Location',
+            filterName: 'location',
             checkboxes: [
                 {
                     checkboxClassName: "checkboxes-select__checkbox",
@@ -78,6 +81,7 @@ function Employees() {
                 isRenderForModal: true,
             },
             checkboxesSelectTitle: 'Status',
+            filterName: 'status',
             checkboxes: [
                 {
                     checkboxClassName: "checkboxes-select__checkbox",
@@ -100,6 +104,7 @@ function Employees() {
                 isRenderForModal: true,
             },
             checkboxesSelectTitle: 'Department',
+            filterName: 'department',
             checkboxes: [
                 {
                     checkboxClassName: "checkboxes-select__checkbox",
@@ -122,6 +127,7 @@ function Employees() {
                 isRenderForModal: true,
             },
             checkboxesSelectTitle: 'Pay Status',
+            filterName: 'payStatus',
             checkboxes: [
                 {
                     checkboxClassName: "checkboxes-select__checkbox",
@@ -144,6 +150,7 @@ function Employees() {
                 isRenderForModal: true,
             },
             checkboxesSelectTitle: 'Direct Report',
+            filterName: 'directReport',
             checkboxes: [
                 {
                     checkboxClassName: "checkboxes-select__checkbox",
@@ -166,6 +173,7 @@ function Employees() {
                 isRenderForModal: true,
             },
             checkboxesSelectTitle: 'Add/Remove Columns',
+            filterName: 'changeColumns',
             checkboxes: [
                 {
                     checkboxClassName: "checkboxes-select__checkbox",
@@ -183,6 +191,29 @@ function Employees() {
         },
     ]);
 
+    function getEmployeesFilters() {
+        const employeesFilters = [];
+
+        checkboxesSelects.forEach((checkboxesSelect) => {
+            const filterItem = new Map();
+            const filterValues = [];
+
+            checkboxesSelect.checkboxes.forEach((checkbox) => {
+                checkbox.checkboxChecked && filterValues.push(checkbox.checkboxTitle);
+            });
+
+            filterItem.set(checkboxesSelect['filterName'], filterValues);
+
+
+            employeesFilters.push(filterItem);
+        });
+
+        console.log('чекбоксы хуево работают, новое свойство filterName теряют');
+        console.log(employeesFilters);
+
+        return checkboxesSelects;
+    }
+
     return (
         <div className="employees">
             <h5>Employees</h5>
@@ -192,7 +223,7 @@ function Employees() {
                 setCheckboxesSelects={setCheckboxesSelects}
             />
 
-            <EmployeesTable filters={checkboxesSelects} />
+            <EmployeesTable filters={getEmployeesFilters()} />
         </div>
     );
 }
