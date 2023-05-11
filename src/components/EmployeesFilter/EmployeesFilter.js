@@ -73,7 +73,7 @@ function EmployeesFilter({ checkboxesSelects, setCheckboxesSelects }) {
                 <div className="employees-filter__modal-body modal-body">
                     {
                         checkboxesSelects.map(({ additionalProps, checkboxesSelectTitle, checkboxes, id }) => (
-                            additionalProps.isRenderForModal && <div key={id} className="form-control modal-body__field-box">
+                            <div key={id} className="form-control modal-body__field-box">
                                 <CheckboxesSelect
                                     id={id}
                                     additionalProps={additionalProps}

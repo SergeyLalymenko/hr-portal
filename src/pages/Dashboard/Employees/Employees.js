@@ -9,10 +9,9 @@ function Employees() {
             id: 1,
             additionalProps: {
                 isRenderForPage: true,
-                isRenderForModal: true,
+                filterName: 'company',
             },
             checkboxesSelectTitle: 'Company',
-            filterName: 'company',
             checkboxes: [
                 {
                     checkboxClassName: "checkboxes-select__checkbox",
@@ -24,7 +23,7 @@ function Employees() {
                     checkboxClassName: "checkboxes-select__checkbox",
                     checkboxName: "2",
                     checkboxTitle: "Option 2",
-                    checkboxChecked: false,
+                    checkboxChecked: true,
                 },
             ],
         },
@@ -32,10 +31,9 @@ function Employees() {
             id: 2,
             additionalProps: {
                 isRenderForPage: false,
-                isRenderForModal: true,
+                filterName: 'role',
             },
             checkboxesSelectTitle: 'Role',
-            filterName: 'role',
             checkboxes: [
                 {
                     checkboxClassName: "checkboxes-select__checkbox",
@@ -47,7 +45,7 @@ function Employees() {
                     checkboxClassName: "checkboxes-select__checkbox",
                     checkboxName: "2",
                     checkboxTitle: "Option 2",
-                    checkboxChecked: false,
+                    checkboxChecked: true,
                 },
             ],
         },
@@ -55,10 +53,9 @@ function Employees() {
             id: 3,
             additionalProps: {
                 isRenderForPage: true,
-                isRenderForModal: true,
+                filterName: 'location',
             },
             checkboxesSelectTitle: 'Location',
-            filterName: 'location',
             checkboxes: [
                 {
                     checkboxClassName: "checkboxes-select__checkbox",
@@ -70,7 +67,7 @@ function Employees() {
                     checkboxClassName: "checkboxes-select__checkbox",
                     checkboxName: "2",
                     checkboxTitle: "Option 2",
-                    checkboxChecked: false,
+                    checkboxChecked: true,
                 },
             ],
         },
@@ -78,10 +75,9 @@ function Employees() {
             id: 4,
             additionalProps: {
                 isRenderForPage: false,
-                isRenderForModal: true,
+                filterName: 'status',
             },
             checkboxesSelectTitle: 'Status',
-            filterName: 'status',
             checkboxes: [
                 {
                     checkboxClassName: "checkboxes-select__checkbox",
@@ -93,7 +89,7 @@ function Employees() {
                     checkboxClassName: "checkboxes-select__checkbox",
                     checkboxName: "2",
                     checkboxTitle: "Option 2",
-                    checkboxChecked: false,
+                    checkboxChecked: true,
                 },
             ],
         },
@@ -101,10 +97,9 @@ function Employees() {
             id: 5,
             additionalProps: {
                 isRenderForPage: true,
-                isRenderForModal: true,
+                filterName: 'department',
             },
             checkboxesSelectTitle: 'Department',
-            filterName: 'department',
             checkboxes: [
                 {
                     checkboxClassName: "checkboxes-select__checkbox",
@@ -116,7 +111,7 @@ function Employees() {
                     checkboxClassName: "checkboxes-select__checkbox",
                     checkboxName: "2",
                     checkboxTitle: "Option 2",
-                    checkboxChecked: false,
+                    checkboxChecked: true,
                 },
             ],
         },
@@ -124,10 +119,9 @@ function Employees() {
             id: 6,
             additionalProps: {
                 isRenderForPage: false,
-                isRenderForModal: true,
+                filterName: 'payStatus',
             },
             checkboxesSelectTitle: 'Pay Status',
-            filterName: 'payStatus',
             checkboxes: [
                 {
                     checkboxClassName: "checkboxes-select__checkbox",
@@ -139,7 +133,7 @@ function Employees() {
                     checkboxClassName: "checkboxes-select__checkbox",
                     checkboxName: "2",
                     checkboxTitle: "Option 2",
-                    checkboxChecked: false,
+                    checkboxChecked: true,
                 },
             ],
         },
@@ -147,10 +141,9 @@ function Employees() {
             id: 7,
             additionalProps: {
                 isRenderForPage: true,
-                isRenderForModal: true,
+                filterName: 'directReport',
             },
             checkboxesSelectTitle: 'Direct Report',
-            filterName: 'directReport',
             checkboxes: [
                 {
                     checkboxClassName: "checkboxes-select__checkbox",
@@ -162,7 +155,7 @@ function Employees() {
                     checkboxClassName: "checkboxes-select__checkbox",
                     checkboxName: "2",
                     checkboxTitle: "Option 2",
-                    checkboxChecked: false,
+                    checkboxChecked: true,
                 },
             ],
         },
@@ -170,10 +163,9 @@ function Employees() {
             id: 8,
             additionalProps: {
                 isRenderForPage: false,
-                isRenderForModal: true,
+                filterName: 'changeColumns',
             },
             checkboxesSelectTitle: 'Add/Remove Columns',
-            filterName: 'changeColumns',
             checkboxes: [
                 {
                     checkboxClassName: "checkboxes-select__checkbox",
@@ -185,33 +177,26 @@ function Employees() {
                     checkboxClassName: "checkboxes-select__checkbox",
                     checkboxName: "2",
                     checkboxTitle: "Option 2",
-                    checkboxChecked: false,
+                    checkboxChecked: true,
                 },
             ],
         },
     ]);
 
     function getEmployeesFilters() {
-        const employeesFilters = [];
+        const employeesFilters = new Map();
 
         checkboxesSelects.forEach((checkboxesSelect) => {
-            const filterItem = new Map();
             const filterValues = [];
 
             checkboxesSelect.checkboxes.forEach((checkbox) => {
                 checkbox.checkboxChecked && filterValues.push(checkbox.checkboxTitle);
             });
 
-            filterItem.set(checkboxesSelect['filterName'], filterValues);
-
-
-            employeesFilters.push(filterItem);
+            employeesFilters.set(checkboxesSelect.additionalProps.filterName, filterValues);
         });
 
-        console.log('чекбоксы хуево работают, новое свойство filterName теряют');
-        console.log(employeesFilters);
-
-        return checkboxesSelects;
+        return Object.fromEntries(employeesFilters);
     }
 
     return (
