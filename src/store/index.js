@@ -4,6 +4,7 @@ import notificationsSlice from './notificationsSlice';
 import todosSlice from './todosSlice';
 import eventsSlice from './eventsSlice';
 import dashboardComponentsSlice from './dashboardComponentsSlice';
+import employeesSlice from './employeesSlice';
 import thunk from 'redux-thunk';
 
 const rootReducer = combineReducers({
@@ -12,6 +13,7 @@ const rootReducer = combineReducers({
     todos: todosSlice,
     events: eventsSlice,
     dashboardComponents: dashboardComponentsSlice,
+    employees: employeesSlice,
 });
 
 export const store = configureStore({

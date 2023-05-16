@@ -59,6 +59,24 @@
     background: $colorGreen;
     color: $colorWhite;
 }
+@mixin btn-error {
+    background: $colorError;
+    color: $colorWhite;
+
+    &:hover {
+        background: rgba($colorError, .8);
+    }
+}
+@mixin btn-icon {
+    min-width: 38px;
+    width: 38px;
+    height: 38px;
+    border-radius: 4px;
+
+    svg {
+        font-size: 1rem;
+    }
+}
 
 @mixin h1 {
     font-size: 2.5rem;
