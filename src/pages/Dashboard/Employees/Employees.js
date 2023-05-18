@@ -16,13 +16,13 @@ function Employees() {
                 {
                     checkboxClassName: "checkboxes-select__checkbox",
                     checkboxName: "1",
-                    checkboxTitle: "Option 1",
+                    checkboxTitle: "Phonexa",
                     checkboxChecked: false,
                 },
                 {
                     checkboxClassName: "checkboxes-select__checkbox",
                     checkboxName: "2",
-                    checkboxTitle: "Option 2",
+                    checkboxTitle: "Zero Parallel",
                     checkboxChecked: false,
                 },
             ],
@@ -30,7 +30,7 @@ function Employees() {
         {
             id: 2,
             additionalProps: {
-                isRenderForPage: false,
+                isRenderForPage: true,
                 filterName: 'role',
             },
             checkboxesSelectTitle: 'Role',
@@ -38,13 +38,13 @@ function Employees() {
                 {
                     checkboxClassName: "checkboxes-select__checkbox",
                     checkboxName: "1",
-                    checkboxTitle: "Option 1",
+                    checkboxTitle: "Admin",
                     checkboxChecked: false,
                 },
                 {
                     checkboxClassName: "checkboxes-select__checkbox",
                     checkboxName: "2",
-                    checkboxTitle: "Option 2",
+                    checkboxTitle: "User",
                     checkboxChecked: false,
                 },
             ],
@@ -60,41 +60,19 @@ function Employees() {
                 {
                     checkboxClassName: "checkboxes-select__checkbox",
                     checkboxName: "1",
-                    checkboxTitle: "Option 1",
+                    checkboxTitle: "US",
                     checkboxChecked: false,
                 },
                 {
                     checkboxClassName: "checkboxes-select__checkbox",
                     checkboxName: "2",
-                    checkboxTitle: "Option 2",
+                    checkboxTitle: "UK",
                     checkboxChecked: false,
                 },
             ],
         },
         {
             id: 4,
-            additionalProps: {
-                isRenderForPage: false,
-                filterName: 'status',
-            },
-            checkboxesSelectTitle: 'Status',
-            checkboxes: [
-                {
-                    checkboxClassName: "checkboxes-select__checkbox",
-                    checkboxName: "1",
-                    checkboxTitle: "Option 1",
-                    checkboxChecked: false,
-                },
-                {
-                    checkboxClassName: "checkboxes-select__checkbox",
-                    checkboxName: "2",
-                    checkboxTitle: "Option 2",
-                    checkboxChecked: false,
-                },
-            ],
-        },
-        {
-            id: 5,
             additionalProps: {
                 isRenderForPage: true,
                 filterName: 'department',
@@ -104,19 +82,19 @@ function Employees() {
                 {
                     checkboxClassName: "checkboxes-select__checkbox",
                     checkboxName: "1",
-                    checkboxTitle: "Option 1",
+                    checkboxTitle: "Front End",
                     checkboxChecked: false,
                 },
                 {
                     checkboxClassName: "checkboxes-select__checkbox",
                     checkboxName: "2",
-                    checkboxTitle: "Option 2",
+                    checkboxTitle: "Back End",
                     checkboxChecked: false,
                 },
             ],
         },
         {
-            id: 6,
+            id: 5,
             additionalProps: {
                 isRenderForPage: false,
                 filterName: 'payStatus',
@@ -126,57 +104,19 @@ function Employees() {
                 {
                     checkboxClassName: "checkboxes-select__checkbox",
                     checkboxName: "1",
-                    checkboxTitle: "Option 1",
+                    checkboxTitle: "payStatus1",
                     checkboxChecked: false,
                 },
                 {
                     checkboxClassName: "checkboxes-select__checkbox",
                     checkboxName: "2",
-                    checkboxTitle: "Option 2",
-                    checkboxChecked: false,
-                },
-            ],
-        },
-        {
-            id: 7,
-            additionalProps: {
-                isRenderForPage: true,
-                filterName: 'directReport',
-            },
-            checkboxesSelectTitle: 'Direct Report',
-            checkboxes: [
-                {
-                    checkboxClassName: "checkboxes-select__checkbox",
-                    checkboxName: "1",
-                    checkboxTitle: "Option 1",
+                    checkboxTitle: "payStatus2",
                     checkboxChecked: false,
                 },
                 {
                     checkboxClassName: "checkboxes-select__checkbox",
-                    checkboxName: "2",
-                    checkboxTitle: "Option 2",
-                    checkboxChecked: false,
-                },
-            ],
-        },
-        {
-            id: 8,
-            additionalProps: {
-                isRenderForPage: false,
-                filterName: 'changeColumns',
-            },
-            checkboxesSelectTitle: 'Add/Remove Columns',
-            checkboxes: [
-                {
-                    checkboxClassName: "checkboxes-select__checkbox",
-                    checkboxName: "1",
-                    checkboxTitle: "Option 1",
-                    checkboxChecked: false,
-                },
-                {
-                    checkboxClassName: "checkboxes-select__checkbox",
-                    checkboxName: "2",
-                    checkboxTitle: "Option 2",
+                    checkboxName: "3",
+                    checkboxTitle: "payStatus3",
                     checkboxChecked: false,
                 },
             ],

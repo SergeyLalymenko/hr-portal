@@ -12,16 +12,32 @@ function EmployeesTable({ filters }) {
         dispatch(fetchEmployees());
     }, [dispatch]);
 
+    function renderEmployees() {
+        const filteredEmployees = getFilteredEmployees();
+
+        return filteredEmployees.map((employee) => (
+            <EmployeeCard
+                key={employee.id}
+                employee={employee}
+            />
+        ));
+    }
+
+    function getFilteredEmployees() {
+        return employees.filter((employee) => {
+            for(let key in filters) {
+                if(!filters[key].length) continue;
+
+                if(!filters[key].includes(employee[key])) return false;
+            }
+
+            return true;
+        })
+    }
+
     return (
         <div className="employees-table">
-            {
-                employees?.map((employee) => (
-                    <EmployeeCard
-                        key={employee.id}
-                        employee={employee}
-                    />
-                ))
-            }
+            {employees && renderEmployees()}
         </div>
     );
 }

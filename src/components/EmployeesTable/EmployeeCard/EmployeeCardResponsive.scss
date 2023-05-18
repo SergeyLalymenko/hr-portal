@@ -1,0 +1,24 @@
+@media($media-xl) {
+    .employee-card {
+        width: calc(100% / 2 - 12px);
+        &:nth-child(3n - 2) {
+            margin-left: 24px;
+        }
+        &:nth-child(2n - 1) {
+            margin-left: 0;
+        }
+    }
+}
+
+@media($media-md) {
+    .employee-card {
+        width: 100%;
+        margin-left: 0;
+        &:nth-child(3n - 2) {
+            margin-left: 0;
+        }
+        &:nth-child(2n - 1) {
+            margin-left: 0;
+        }
+    }
+}

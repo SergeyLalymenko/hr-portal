@@ -4,12 +4,17 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    width: calc(100% / 3 - 16px);
     margin-top: 24px;
+    margin-left: 24px;
+    width: calc(100% / 3 - 16px);
     border-radius: 4px;
     box-shadow: 0px 0px 16px 0px #324A6629;
     border: 1px solid $colorLightGray;
     overflow: hidden;
+
+    &:nth-child(3n - 2) {
+        margin-left: 0;
+    }
 
     &:hover {
         .employee-card__actions {
@@ -29,6 +34,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        min-width: 60px;
         width: 60px;
         height: 60px;
         border-radius: 50%;
@@ -102,3 +108,5 @@
         }
     }
 }
+
+@import './EmployeeCardResponsive';
