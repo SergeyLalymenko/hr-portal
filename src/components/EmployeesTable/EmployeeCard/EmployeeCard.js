@@ -5,7 +5,6 @@ import avatarImg from '@assets/img/header/logo.svg';
 import './EmployeeCard.scss';
 
 function EmployeeCard({ employee }) {
-    console.log(employee);
     return (
         <div className="employee-card">
             <div className="employee-card__head">

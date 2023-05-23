@@ -8,7 +8,11 @@ import {
     useSensor,
     useSensors,
 } from '@dnd-kit/core';
-import { arrayMove, SortableContext, sortableKeyboardCoordinates } from '@dnd-kit/sortable';
+import {
+    arrayMove,
+    SortableContext,
+    sortableKeyboardCoordinates
+} from '@dnd-kit/sortable';
 import {
     fetchDashboardComponents,
     updateDashboardComponentsLocal,

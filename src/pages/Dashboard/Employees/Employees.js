@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, memo } from 'react';
 import EmployeesFilter from '@components/EmployeesFilter/EmployeesFilter';
 import EmployeesTable from '@components/EmployeesTable/EmployeesTable';
 import './Employees.scss';
@@ -153,4 +153,4 @@ function Employees() {
     );
 }
 
-export default Employees;
+export default memo(Employees);

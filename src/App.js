@@ -16,7 +16,7 @@ function App() {
 
     useEffect(() => {
         dispatch(fetchUser());
-    }, []);
+    }, [dispatch]);
 
     function toggleSidebar() {
         setIsSidebarOpened(!isSidebarOpened);
@@ -36,10 +36,22 @@ function App() {
 
     return (
     <>
-        <Header toggleSidebar={toggleSidebar} isSidebarOpened={isSidebarOpened} user={user} renderUserName={renderUserName} renderUserAvatar={renderUserAvatar} />
+        <Header
+            toggleSidebar={toggleSidebar}
+            isSidebarOpened={isSidebarOpened}
+            user={user}
+            renderUserName={renderUserName}
+            renderUserAvatar={renderUserAvatar}
+        />
 
         <main className="main">
-            <Sidebar toggleSidebar={toggleSidebar} isSidebarOpened={isSidebarOpened} user={user} renderUserName={renderUserName} renderUserAvatar={renderUserAvatar} />
+            <Sidebar
+                toggleSidebar={toggleSidebar}
+                isSidebarOpened={isSidebarOpened}
+                user={user}
+                renderUserName={renderUserName}
+                renderUserAvatar={renderUserAvatar}
+            />
 
             <div className="content">
                 <Routes>
