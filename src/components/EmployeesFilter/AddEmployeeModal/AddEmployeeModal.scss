@@ -1,0 +1,78 @@
+@import '@styles/variables/index';
+
+.add-employee-modal {
+    .form {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        padding: 8px 60px 40px;
+
+        &__field-box {
+            width: calc(50% - 10px);
+            margin-top: 12px;
+        }
+
+        &__submit-box {
+            display: flex;
+            justify-content: center;
+            margin-top: 40px;
+            width: 100%;
+        }
+
+        &__submit {
+            @include btn-secondary;
+            @include btn-md;
+
+            width: 220px;
+
+            h5 {
+                margin-left: 10px;
+            }
+        }
+    }
+}
+
+.add-employee-modal-success {
+    display: flex;
+    flex-direction: column;
+
+    &__close {
+        margin: 30px 30px 80px auto;
+        width: 30px;
+        height: 30px;
+        position: relative;
+        cursor: pointer;
+
+        div {
+            position: absolute;
+            top: 14px;
+            left: 0;
+            width: 30px;
+            height: 2px;
+            background: $colorBlack;
+            border-radius: 1px;
+
+            &:nth-child(1) {
+                transform: rotate(45deg);
+            }
+
+            &:nth-child(2) {
+                transform: rotate(-45deg);
+            }
+        }
+    }
+
+    >h4 {
+        padding: 0 20px;
+        text-align: center;
+        color: $colorDarkBlue;
+        margin-bottom: 30px;
+    }
+
+    >svg {
+        margin: 0 auto 140px;
+    }
+}
+
+@import './AddEmployeeModalResponsive';

@@ -1,10 +1,18 @@
+import { useDispatch } from 'react-redux';
+import { deleteEmployee } from '@store/employeesSlice';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendar, faUser } from '@fortawesome/free-regular-svg-icons';
-import { faEnvelope, faMapPin, faPen, faPhoneFlip, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faMapPin, faTrash } from '@fortawesome/free-solid-svg-icons';
 import avatarImg from '@assets/img/header/logo.svg';
 import './EmployeeCard.scss';
 
 function EmployeeCard({ employee }) {
+    const dispatch = useDispatch();
+
+    function onDeleteEmployee() {
+        dispatch(deleteEmployee(employee.id));
+    }
+
     return (
         <div className="employee-card">
             <div className="employee-card__head">
@@ -43,27 +51,7 @@ function EmployeeCard({ employee }) {
 
             <div className="employee-card__actions">
                 <button
-                    className="employee-card__icon employee-card__icon--tertiary"
-                    type="button"
-                >
-                    <FontAwesomeIcon icon={faPhoneFlip} />
-                </button>
-
-                <button
-                    className="employee-card__icon employee-card__icon--tertiary"
-                    type="button"
-                >
-                    <FontAwesomeIcon icon={faEnvelope} />
-                </button>
-
-                <button
-                    className="employee-card__icon employee-card__icon--tertiary"
-                    type="button"
-                >
-                    <FontAwesomeIcon icon={faPen} />
-                </button>
-
-                <button
+                    onClick={onDeleteEmployee}
                     className="employee-card__icon employee-card__icon--error"
                     type="button"
                 >

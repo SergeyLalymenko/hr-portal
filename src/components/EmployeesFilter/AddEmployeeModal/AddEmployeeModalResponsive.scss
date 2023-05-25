@@ -1,0 +1,30 @@
+@media($media-lg) {
+    .add-employee-modal {
+        .form {
+            flex-direction: column;
+            justify-content: flex-start;
+
+            &__field-box {
+                margin-top: 12px;
+                width: 100%;
+            }
+
+            &__submit-box {
+                order: 2;
+                margin-top: 30px;
+            }
+        }
+    }
+}
+
+@media($media-sm) {
+    .add-employee-modal {
+        .form {
+            padding: 8px 40px 40px;
+
+            &__submit-box {
+                margin-top: 24px;
+            }
+        }
+    }
+}

@@ -162,14 +162,12 @@ function Events({ id, isCustomizing, getCustomizingClass, onDeleteComponent }) {
                     )
                 }
 
-                {
-                    <AddEventModal
-                        isModalOpened={isModalOpened}
-                        setIsModalOpened={setIsModalOpened}
-                        isSuccessModal={isSuccessModal}
-                        setIsSuccessModal={setIsSuccessModal}
-                    />
-                }
+                <AddEventModal
+                    isModalOpened={isModalOpened}
+                    setIsModalOpened={setIsModalOpened}
+                    isSuccessModal={isSuccessModal}
+                    setIsSuccessModal={setIsSuccessModal}
+                />
             </div>
         </Tippy>
     );
