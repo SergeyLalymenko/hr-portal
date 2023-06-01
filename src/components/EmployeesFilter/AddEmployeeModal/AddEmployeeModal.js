@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { Formik, Form, Field } from 'formik';
 import { addEmployee } from '@store/employeesSlice';
 import Modal from '@components/Modal/Modal';
+import Input from '@components/Input/Input';
 import Select from '@components/Select/Select';
 import classNames from 'classnames';
 import './AddEmployeeModal.scss';
@@ -85,6 +86,8 @@ function AddEmployeeModal({ isModalOpened, setIsModalOpened, isSuccessModal, set
 
     function getInitialValues() {
         return {
+            name: '',
+            surname: '',
             company: '',
             role: '',
             location: '',
@@ -100,6 +103,14 @@ function AddEmployeeModal({ isModalOpened, setIsModalOpened, isSuccessModal, set
 
     function validateForm(values) {
         const errors = {};
+
+        if(!values.name) {
+            errors.name = 'Required';
+        }
+
+        if(!values.surname) {
+            errors.surname = 'Required';
+        }
 
         if(!values.company) {
             errors.company = 'Required';
@@ -129,7 +140,8 @@ function AddEmployeeModal({ isModalOpened, setIsModalOpened, isSuccessModal, set
 
         const newEmployee = {
             ...values,
-            hireDate: '',
+            hireDate: 1684425170,
+            manager: 1,
         }
 
         dispatch(addEmployee(newEmployee))
@@ -140,6 +152,24 @@ function AddEmployeeModal({ isModalOpened, setIsModalOpened, isSuccessModal, set
     function renderForm() {
         return ({ errors, touched, values, setFieldValue, setFieldTouched, isValid, dirty, isSubmitting }) => (
             <Form className="add-employee-modal__form form" autoComplete="off" noValidate>
+                <Input
+                    boxClassName="form__field-box"
+                    currentValue={values.name}
+                    setCurrentValue={(value) => setCustomFieldValue(value, 'name', touched.name, setFieldValue, setFieldTouched)}
+                    status={classNames(getFieldStatus(errors.name, touched.name))}
+                    label="Name"
+                    name="name"
+                />
+
+                <Input
+                    boxClassName="form__field-box"
+                    currentValue={values.surname}
+                    setCurrentValue={(value) => setCustomFieldValue(value, 'surname', touched.surname, setFieldValue, setFieldTouched)}
+                    status={classNames(getFieldStatus(errors.surname, touched.surname))}
+                    label="Surname"
+                    name="surname"
+                />
+
                 <Select
                     boxClassName="form__field-box"
                     selectClassName={classNames(getFieldStatus(errors.company, touched.company))}

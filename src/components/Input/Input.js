@@ -1,11 +1,24 @@
+import classNames from 'classnames';
 import './Input.scss';
 
-function Input() {
+function Input({
+        currentValue,
+        setCurrentValue,
+        boxClassName,
+        label,
+        status
+    }) {
     return (
-        <div className="input-wrapper">
-            <input type="text" placeholder="empty" />
+        <div className={classNames('input-wrapper', { [`${boxClassName}`]: boxClassName })}>
+            <input
+                className={classNames({ [`${status}`]: status })}
+                onChange={({ target: { value } }) => setCurrentValue(value)}
+                value={currentValue}
+                type="text"
+                placeholder="empty"
+            />
 
-            <label>Input</label>
+            <label>{label}</label>
         </div>
     );
 }

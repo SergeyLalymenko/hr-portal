@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import AddEmployeeModal from "./AddEmployeeModal/AddEmployeeModal";
 import Modal from '@components/Modal/Modal';
-import Input from '@components/Input/Input';
 import CheckboxesSelect from '@components/CheckboxesSelect/CheckboxesSelect';
 import { faFilter, faUserPlus, faFile, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -34,100 +33,99 @@ function EmployeesFilter({ checkboxesSelects, setCheckboxesSelects }) {
 
     return (
         <div className="employees-filter">
-            <Input />
-            {/*<div className="employees-filter__checkboxes-wrapper">*/}
-            {/*    <h6>*/}
-            {/*        Filter:*/}
-            {/*    </h6>*/}
+            <div className="employees-filter__checkboxes-wrapper">
+                <h6>
+                    Filter:
+                </h6>
 
-            {/*    {*/}
-            {/*        checkboxesSelects.map(({ additionalProps, checkboxesSelectTitle, checkboxes, id }) => (*/}
-            {/*            additionalProps.isRenderForPage && <CheckboxesSelect*/}
-            {/*                key={id}*/}
-            {/*                id={id}*/}
-            {/*                additionalProps={additionalProps}*/}
-            {/*                checkboxesSelectTitle={checkboxesSelectTitle}*/}
-            {/*                checkboxes={checkboxes}*/}
-            {/*                onCheckboxesSelectChange={onCheckboxesSelectChange}*/}
-            {/*            />*/}
-            {/*        ))*/}
-            {/*    }*/}
-            {/*</div>*/}
+                {
+                    checkboxesSelects.map(({ additionalProps, checkboxesSelectTitle, checkboxes, id }) => (
+                        additionalProps.isRenderForPage && <CheckboxesSelect
+                            key={id}
+                            id={id}
+                            additionalProps={additionalProps}
+                            checkboxesSelectTitle={checkboxesSelectTitle}
+                            checkboxes={checkboxes}
+                            onCheckboxesSelectChange={onCheckboxesSelectChange}
+                        />
+                    ))
+                }
+            </div>
 
-            {/*<div className="employees-filter__buttons">*/}
-            {/*    <button type="button" className="employees-filter__button" onClick={() => setIsOpenFilterModal(true)}>*/}
-            {/*        <FontAwesomeIcon icon={faFilter} />*/}
-            {/*    </button>*/}
+            <div className="employees-filter__buttons">
+                <button type="button" className="employees-filter__button" onClick={() => setIsOpenFilterModal(true)}>
+                    <FontAwesomeIcon icon={faFilter} />
+                </button>
 
-            {/*    <div className={classNames('employees-filter__search', { active: isActiveSearch })}>*/}
-            {/*        <input placeholder="Search" />*/}
+                <div className={classNames('employees-filter__search', { active: isActiveSearch })}>
+                    <input placeholder="Search" />
 
-            {/*        <button*/}
-            {/*            onClick={() => setIsActiveSearch(!isActiveSearch)}*/}
-            {/*            type="button"*/}
-            {/*            className="employees-filter__button"*/}
-            {/*        >*/}
-            {/*            <FontAwesomeIcon icon={faMagnifyingGlass} />*/}
-            {/*        </button>*/}
-            {/*    </div>*/}
+                    <button
+                        onClick={() => setIsActiveSearch(!isActiveSearch)}
+                        type="button"
+                        className="employees-filter__button"
+                    >
+                        <FontAwesomeIcon icon={faMagnifyingGlass} />
+                    </button>
+                </div>
 
-            {/*    <button*/}
-            {/*        onClick={onEmployeeModalOpen}*/}
-            {/*        type="button"*/}
-            {/*        className="employees-filter__button"*/}
-            {/*    >*/}
-            {/*        <FontAwesomeIcon icon={faUserPlus} />*/}
-            {/*    </button>*/}
+                <button
+                    onClick={onEmployeeModalOpen}
+                    type="button"
+                    className="employees-filter__button"
+                >
+                    <FontAwesomeIcon icon={faUserPlus} />
+                </button>
 
-            {/*    <button type="button" className="employees-filter__button">*/}
-            {/*        <FontAwesomeIcon icon={faFile} />*/}
-            {/*    </button>*/}
-            {/*</div>*/}
+                <button type="button" className="employees-filter__button">
+                    <FontAwesomeIcon icon={faFile} />
+                </button>
+            </div>
 
-            {/*<Modal*/}
-            {/*    open={isOpenFilterModal}*/}
-            {/*    setOpen={setIsOpenFilterModal}*/}
-            {/*    modalHeadTitle="Advanced Filters"*/}
-            {/*>*/}
-            {/*    <div className="employees-filter__modal-body modal-body">*/}
-            {/*        {*/}
-            {/*            checkboxesSelects.map(({ additionalProps, checkboxesSelectTitle, checkboxes, id }) => (*/}
-            {/*                <div key={id} className="form-control modal-body__field-box">*/}
-            {/*                    <CheckboxesSelect*/}
-            {/*                        id={id}*/}
-            {/*                        additionalProps={additionalProps}*/}
-            {/*                        checkboxesSelectTitle={checkboxesSelectTitle}*/}
-            {/*                        checkboxes={checkboxes}*/}
-            {/*                        onCheckboxesSelectChange={onCheckboxesSelectChange}*/}
-            {/*                    />*/}
-            {/*                </div>*/}
-            {/*            ))*/}
-            {/*        }*/}
+            <Modal
+                open={isOpenFilterModal}
+                setOpen={setIsOpenFilterModal}
+                modalHeadTitle="Advanced Filters"
+            >
+                <div className="employees-filter__modal-body modal-body">
+                    {
+                        checkboxesSelects.map(({ additionalProps, checkboxesSelectTitle, checkboxes, id }) => (
+                            <div key={id} className="modal-body__field-box">
+                                <CheckboxesSelect
+                                    id={id}
+                                    additionalProps={additionalProps}
+                                    checkboxesSelectTitle={checkboxesSelectTitle}
+                                    checkboxes={checkboxes}
+                                    onCheckboxesSelectChange={onCheckboxesSelectChange}
+                                />
+                            </div>
+                        ))
+                    }
 
-            {/*        <div className="modal-body__buttons">*/}
-            {/*            <button*/}
-            {/*                className="modal-body__button modal-body__button--cancel"*/}
-            {/*                onClick={() => setIsOpenFilterModal(false)}*/}
-            {/*            >*/}
-            {/*                Cancel*/}
-            {/*            </button>*/}
+                    <div className="modal-body__buttons">
+                        <button
+                            className="modal-body__button modal-body__button--cancel"
+                            onClick={() => setIsOpenFilterModal(false)}
+                        >
+                            Cancel
+                        </button>
 
-            {/*            <button*/}
-            {/*                className="modal-body__button modal-body__button--apply"*/}
-            {/*                onClick={() => setIsOpenFilterModal(false)}*/}
-            {/*            >*/}
-            {/*                Apply Filters*/}
-            {/*            </button>*/}
-            {/*        </div>*/}
-            {/*    </div>*/}
-            {/*</Modal>*/}
+                        <button
+                            className="modal-body__button modal-body__button--apply"
+                            onClick={() => setIsOpenFilterModal(false)}
+                        >
+                            Apply Filters
+                        </button>
+                    </div>
+                </div>
+            </Modal>
 
-            {/*<AddEmployeeModal*/}
-            {/*    isModalOpened={isOpenEmployeeModal}*/}
-            {/*    setIsModalOpened={setIsOpenEmployeeModal}*/}
-            {/*    isSuccessModal={isSuccessEmployeeModal}*/}
-            {/*    setIsSuccessModal={setIsSuccessEmployeeModal}*/}
-            {/*/>*/}
+            <AddEmployeeModal
+                isModalOpened={isOpenEmployeeModal}
+                setIsModalOpened={setIsOpenEmployeeModal}
+                isSuccessModal={isSuccessEmployeeModal}
+                setIsSuccessModal={setIsSuccessEmployeeModal}
+            />
         </div>
     );
 }

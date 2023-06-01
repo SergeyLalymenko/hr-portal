@@ -9,14 +9,6 @@ function Select({
         setCurrentValue,
         label
     }) {
-    function getBoxClassName() {
-        return boxClassName ? boxClassName : '';
-    }
-
-    function getSelectClassName() {
-        return selectClassName ? selectClassName : '';
-    }
-
     function onSelectItemClick(option) {
         if(!option.disabled) {
             setCurrentValue(option.value);
@@ -24,8 +16,15 @@ function Select({
     }
 
     return (
-        <div className={classNames('form-control', getBoxClassName())}>
-            <div className={classNames('select', { choosed: currentValue }, getSelectClassName())}>
+        <div className={classNames(
+            'select-box',
+            { [`${boxClassName}`]: boxClassName }
+        )}>
+            <div className={classNames(
+                'select',
+                { choosed: currentValue },
+                { [`${selectClassName}`]: selectClassName }
+            )}>
                 <div className="select__head">
                     <span className="select__current">
                         {currentValue}

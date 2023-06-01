@@ -113,7 +113,16 @@ function AddEventModal({ isModalOpened, setIsModalOpened, isSuccessModal, setIsS
     }
 
     function renderForm() {
-        return ({ errors, touched, values, setFieldValue, setFieldTouched, isValid, dirty, isSubmitting }) => (
+        return ({
+            errors,
+            touched,
+            values,
+            setFieldValue,
+            setFieldTouched,
+            isValid,
+            dirty,
+            isSubmitting
+        }) => (
             <Form className="add-event-modal__form form" autoComplete="off" noValidate>
                 <Select
                     boxClassName="form__field-box"
@@ -135,7 +144,7 @@ function AddEventModal({ isModalOpened, setIsModalOpened, isSuccessModal, setIsS
                     name="sharedWith"
                 />
 
-                <div className={classNames('form__field-box', 'form-control', { active: areDatepickersOpened.startDate || values.startDate})}>
+                <div className={classNames('form__field-box', 'datepicker-box', { active: areDatepickersOpened.startDate || values.startDate})}>
                     <DatePicker
                         className={classNames('form__field', 'datepicker', getFieldStatus(errors.startDate, touched.startDate))}
                         selected={values.startDate}
@@ -154,7 +163,7 @@ function AddEventModal({ isModalOpened, setIsModalOpened, isSuccessModal, setIsS
                 <div className={
                     classNames(
                         'form__field-box',
-                        'form-control',
+                        'textarea-box',
                         'form__field-box--textarea',
                         { active: values.description }
                     )
@@ -178,7 +187,7 @@ function AddEventModal({ isModalOpened, setIsModalOpened, isSuccessModal, setIsS
                 <div className={
                     classNames(
                         'form__field-box',
-                        'form-control',
+                        'datepicker-box',
                         'form__field-box--end-date',
                         { active: areDatepickersOpened.endDate || values.endDate }
                     )

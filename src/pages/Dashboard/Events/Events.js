@@ -100,7 +100,7 @@ function Events({ id, isCustomizing, getCustomizingClass, onDeleteComponent }) {
                                 )
                             }
 
-                            <div className="events__datepicker-box form-control active">
+                            <div className="events__datepicker-box datepicker-box active">
                                 <DatePicker
                                     className="datepicker"
                                     selected={startDate}
