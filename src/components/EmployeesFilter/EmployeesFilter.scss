@@ -40,15 +40,22 @@
         height: 38px;
         border-radius: 4px;
         border: 0px solid rgba($colorBlack, 0);
+        overflow: hidden;
         transition: .2s ease;
 
         &.active {
             border-color: $colorAcGray;
             border-width: 1px;
 
-            >input {
-                width: 200px;
-                padding: 0 10px;
+            .employees-filter__search-component {
+                >input {
+                    width: 200px;
+                    padding: 10px 12px 0;
+                }
+
+                >label {
+                    opacity: 1;
+                }
             }
 
             >button {
@@ -60,11 +67,17 @@
             }
         }
 
+        >button {
+            transition: .2s ease;
+            margin: 0;
+        }
+    }
+
+    &__search-component {
         >input {
             width: 0;
             color: $colorGray;
             font-size: 1rem;
-            height: 100%;
             border: none;
             padding: 0;
             border-radius: 4px;
@@ -75,9 +88,8 @@
             }
         }
 
-        >button {
-            transition: .2s ease;
-            margin: 0;
+        >label {
+            opacity: 0;
         }
     }
 

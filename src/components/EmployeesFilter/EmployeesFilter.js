@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import AddEmployeeModal from "./AddEmployeeModal/AddEmployeeModal";
 import Modal from '@components/Modal/Modal';
+import Input from '@components/Input/Input';
 import CheckboxesSelect from '@components/CheckboxesSelect/CheckboxesSelect';
 import { faFilter, faUserPlus, faFile, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -12,14 +13,11 @@ function EmployeesFilter({ checkboxesSelects, setCheckboxesSelects }) {
     const [isOpenEmployeeModal, setIsOpenEmployeeModal] = useState(false);
     const [isSuccessEmployeeModal, setIsSuccessEmployeeModal] = useState(false);
     const [isActiveSearch, setIsActiveSearch] = useState(false);
+    const [searchValue, setSearchValue] = useState('');
 
     function onCheckboxesSelectChange(newCheckboxesSelect) {
         const newCheckboxesSelects = checkboxesSelects.map((checkboxesSelect) => (
-            checkboxesSelect.id !== newCheckboxesSelect.id ? (
-                checkboxesSelect
-            ) : (
-                newCheckboxesSelect
-            )
+            checkboxesSelect.id !== newCheckboxesSelect.id ? checkboxesSelect : newCheckboxesSelect
         ));
 
         setCheckboxesSelects(newCheckboxesSelects);
@@ -58,7 +56,14 @@ function EmployeesFilter({ checkboxesSelects, setCheckboxesSelects }) {
                 </button>
 
                 <div className={classNames('employees-filter__search', { active: isActiveSearch })}>
-                    <input placeholder="Search" />
+                    {/*<input placeholder="Search" />*/}
+
+                    <Input
+                        currentValue={searchValue}
+                        setCurrentValue={(value) => setSearchValue(value)}
+                        boxClassName="employees-filter__search-component"
+                        label="Search"
+                    />
 
                     <button
                         onClick={() => setIsActiveSearch(!isActiveSearch)}

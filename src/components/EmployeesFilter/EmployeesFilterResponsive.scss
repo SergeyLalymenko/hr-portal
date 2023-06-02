@@ -45,8 +45,10 @@
             justify-content: flex-start;
 
             &.active {
-                >input {
-                    width: 100%;
+                .employees-filter__search-component {
+                    >input {
+                        width: 100%;
+                    }
                 }
             }
         }
