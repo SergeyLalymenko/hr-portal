@@ -142,6 +142,7 @@ function AddEmployeeModal({ isModalOpened, setIsModalOpened, isSuccessModal, set
             ...values,
             hireDate: 1684425170,
             manager: 1,
+            avatar: '',
         }
 
         dispatch(addEmployee(newEmployee))

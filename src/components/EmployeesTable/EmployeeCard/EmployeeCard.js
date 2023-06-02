@@ -3,7 +3,6 @@ import { deleteEmployee } from '@store/employeesSlice';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendar, faUser } from '@fortawesome/free-regular-svg-icons';
 import { faMapPin, faTrash } from '@fortawesome/free-solid-svg-icons';
-import avatarImg from '@assets/img/header/logo.svg';
 import './EmployeeCard.scss';
 
 function EmployeeCard({ employee }) {
@@ -17,7 +16,11 @@ function EmployeeCard({ employee }) {
         <div className="employee-card">
             <div className="employee-card__head">
                 <div className="employee-card__avatar-box">
-                    <img src={avatarImg} alt="avatar" />
+                    {employee.avatar ? (
+                        <img src={employee.avatar} alt="avatar" />
+                    ) : (
+                        <FontAwesomeIcon icon={faUser} />
+                    )}
                 </div>
 
                 <div className="employee-card__head-data">

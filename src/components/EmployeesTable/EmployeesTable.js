@@ -1,16 +1,9 @@
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchEmployees } from '@store/employeesSlice';
+import { useSelector } from 'react-redux';
 import EmployeeCard from './EmployeeCard/EmployeeCard';
 import './EmployeesTable.scss';
 
 function EmployeesTable({ filters }) {
-    const dispatch = useDispatch();
     const employees = useSelector(state => state.employees.data);
-
-    useEffect(() => {
-        dispatch(fetchEmployees());
-    }, [dispatch]);
 
     function renderEmployees() {
         const filteredEmployees = getFilteredEmployees();

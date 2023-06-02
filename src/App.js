@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import { fetchUser } from '@store/userSlice';
-import { useDispatch, useSelector } from 'react-redux';
+import { fetchEmployees } from '@store/employeesSlice';
+import { useDispatch } from 'react-redux';
 import Header from '@components/Header/Header';
 import Sidebar from '@components/Sidebar/Sidebar';
 import Dashboard from '@pages/Dashboard/Dashboard';
@@ -11,11 +11,12 @@ import './App.scss';
 
 function App() {
     const dispatch = useDispatch();
-    const user = useSelector(state => state.user.data);
+    const [user, setUser] = useState(null);
     const [isSidebarOpened, setIsSidebarOpened] = useState(false);
 
     useEffect(() => {
-        dispatch(fetchUser());
+        dispatch(fetchEmployees())
+            .then((data) => setUser(data.payload[0]));
     }, [dispatch]);
 
     function toggleSidebar() {
@@ -23,14 +24,14 @@ function App() {
     }
 
     function renderUserName() {
-        return user ? user[0].name : 'user';
+        return user ? user.name : 'user';
     }
 
     function renderUserAvatar() {
-        return user[0].avatar ? (
-            <img src={user[0].avatar} alt="avatar" />
+        return user.avatar ? (
+            <img src={user.avatar} alt="avatar" />
         ) : (
-            <h6>{user[0].name[0] + user[0].surname[0]}</h6>
+            <h6>{user.name[0] + user.surname[0]}</h6>
         );
     }
 
